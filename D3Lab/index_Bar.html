@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>
+      D3 - Bar
+    </title>
+        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8" type=
+    "text/javascript">
+</script>
+  </head>
+  <body>
+	<h1>Adult mortality rate (probability of dying between 15 to 60 years per 1000 population) both sexes, 2006</h1>
+	<div class="chart">
+	
+	</div>
+  
+    <script type="text/javascript">
+		var valueField = "Adult mortality rate (probability of dying between 15 to 60 years per 1000 population) both sexes, 2006";
+		var displayField = "Location";
+		d3.csv("csvs/AdultMotality.csv", function(data){
+			console.log(data);
+			
+			//mapping
+			var x = d3.scale.linear()
+			.domain([0, d3.max(data[valueField])])
+			.range([0, 20]);
+			
+			//bar chart
+			d3.select(".chart")
+			.selectAll("div")
+			.data(data)
+			.enter()
+			.append("div")
+			.style("width", function(d){return x(d[valueField]) + "px"; })
+			.style("display","block")
+			.style("background-color","teal")
+			.style("margin-bottom","2px")
+			.style("height","20px")
+			.text(function(d) { return d[displayField];})
+		});		
+	</script>
+  </body>
+</html>

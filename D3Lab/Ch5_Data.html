@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        d3.select("body")
+                .append("p")
+                .text("Chapter 5 - Data");
+
+        d3.csv("D3Lab/CSVs/KwunTong/PopulationByAreas.csv", function(error, data){
+            if(error!=null)
+                console.log(error);
+            else
+                console.log(data);
+        });
+    </script>
+</body>
+</html>

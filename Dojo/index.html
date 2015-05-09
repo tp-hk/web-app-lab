@@ -1,0 +1,39 @@
+<!--http://dojotoolkit.org/documentation/tutorials/1.8/modules/-->
+<!--https://developers.arcgis.com/javascript/jshelp/intro_javascript_classes.html-->
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+
+  <script data-dojo-config="async: true" src="js/lib/dojo/dojo.js"></script>
+
+</head>
+<body>
+
+
+<script>
+  var dojoCOnfig = {
+    baseUrl: "/js/",
+    tlmSiblingOfDojo: false,
+    packages: [
+      {  name: "dojo", location: "lib/dojo" },
+      {  name: "dijit", location: "lib/dijit" },
+      {  name: "dojox", location: "lib/dojox" },
+      {  name: "my", location: "my", main: "app" }
+    ]
+  };
+
+  require([
+    "dojo/_base/declare",
+    "dijit/_WidgetBase",
+    "dijit/_TemplateMixin"
+  ], function(
+    declare, _WidgetBase, _TemplateMixin)
+  {
+
+  });
+</script>
+</body>
+</html>
