@@ -32,6 +32,7 @@
       checkbox.type = "checkbox";
       checkbox.name = field.name;
       checkbox.value = field.name;
+      checkbox.className = "checkboxClass"; //This line is only used for testing querySelectorAll()
       checkbox.onclick = getCheckedCount;
 
       var label = document.createElement("label");
