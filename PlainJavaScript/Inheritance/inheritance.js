@@ -1,4 +1,8 @@
 function runScript(){
+  //http://phrogz.net/JS/classes/OOPinJS.html
+  //Simple object with private, privileged, public properties and methods
+  runPeoplesLife();
+
   //http://javascriptissexy.com/javascript-prototype-in-plain-detailed-language/
   //inheritance with simple objects
   inheritanceWithSimpleObjects();
@@ -13,6 +17,51 @@ function runScript(){
   //Use the Quiz object to create quiz questions and a user
   //*** a failed attempt ***
   Quiz();
+}
+
+function runPeoplesLife(){
+  console.log("*****************************");
+  console.log("The ballad of two dump people");
+  console.log("*****************************");
+  var gk = new Person("White Hawk", "universe 1");
+  var lk = new Person("Victoria Qoo", "universe 2");
+
+  alert("There are now "+Person.population+" people");
+
+  gk.showLegs(); lk.showLegs();                 //Both share the common 'Person.prototype.legs' variable when looking at 'this.legs'
+
+  gk.race = "hispanic";                         //Sets a public variable, but does not overwrite private 'race' variable.
+  alert(gk+"'s real race is "+gk.getRace());    //Returns 'caucasian' from private 'race' variable set at create time.
+  gk.eat(); gk.eat(); gk.eat();                 //weigh is 3...then 9...then 27
+  alert(gk+" weighs "+gk.weigh()+" pounds and has a dirt factor of "+gk.dirtFactor);
+
+  gk.exercise();                                //weigh is now 13.5
+  gk.beCool();                                  //clothing has been update to current fashionable levels
+  gk.clothing="Pimp Outfit";                    //clothing is a public variable that can be updated to any funky value
+  gk.shower();
+  alert("Existing shower technology has gotten "+gk+" to a dirt factor of "+gk.dirtFactor);
+
+  gk.muchTimePasses();                          //50 Years Pass
+  Person.prototype.shower=function(){           //Shower technology improves for everyone
+    this.dirtFactor=0;
+  }
+  gk.beCool=function(){                         //Gavin alone gets new fashion ideas
+    this.clothing="tinfoil";
+  };
+
+  gk.beCool(); gk.shower();
+  alert("Fashionable "+gk+" at "
+    +gk.getAge()+" years old is now wearing "
+    +gk.clothing+" with dirt factor "
+    +gk.dirtFactor);
+
+  gk.amputate();                                //Uses the prototype property and makes a public property
+  gk.showLegs(); lk.showLegs();                 //Lisa still has the prototype property
+
+  gk.muchTimePasses();                          //50 Years Pass...Gavin is now over 100 years old.
+  gk.eat();
+
+
 }
 
 function inheritanceWithSimpleObjects(){
