@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <script>
+    var dojoConfig={
+      async: true,
+      packages: [{
+        name: "demo",
+        location: location.pathname.replace(/\/[^/]*$/, '') + '/'
+      }]
+    };
+  </script>
+
+  <script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"
+          data-dojo-config="async: true">
+  </script>
+  <script>
+    //Note demo/myButton_subClass
+    //if using: demo/C
+    //result --> GET http://localhost:63342/JS/Dojo/demo//C.js 404 (Not Found)
+    require([
+      "demo/myButton",
+      "demo/myButton_subClass"
+    ], function(myButton, classC){
+
+      //simple button inheriting from dijit/ button
+      var myBtn = new myButton();
+      console.log("label property: " + myBtn.label);
+      myBtn.sayHi();
+
+      //multiple inheritance
+      var cInstance = new classC();
+      console.log(cInstance.propertyA);
+      console.log(cInstance.propertyB);
+      console.log(cInstance.propertyC);
+      console.log(cInstance.propertyD);
+    });
+  </script>
+</body>
+</html>

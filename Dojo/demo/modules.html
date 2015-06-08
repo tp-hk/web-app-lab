@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="https://bootswatch.com/darkly/bootstrap.min.css">
+  <style>
+    .valTxt{
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Demo: Using require to load AMD modules</h1>
+  <p>
+    The output below was generated with a simple module that was loaded.
+  </p>
+
+  <script>
+    dojoConfig={
+      async: true,
+      baseUrl: '.',
+      tlmSiblingOfDojo: false
+    };
+  </script>
+
+  <script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"
+    data-dojo-config="async: true">
+  </script>
+  <script>
+    require(["app/counter"], function(counter){
+      log(counter.getValue());
+      counter.increment();
+      log(counter.getValue());
+      counter.decrement();
+      log(counter.getValue());
+
+      function log(val){
+        var consoleDiv = document.getElementById("console");
+        if(!consoleDiv){
+          consoleDiv = document.createElement("div");
+          consoleDiv.id = "console";
+          document.body.appendChild(consoleDiv);
+        }
+        var txtDiv = document.createElement("valTxtDiv");
+        txtDiv.className = "valTxt";
+        txtDiv.appendChild(document.createTextNode(val));
+        consoleDiv.appendChild(txtDiv);
+      }
+    });
+  </script>
+</body>
+</html>
