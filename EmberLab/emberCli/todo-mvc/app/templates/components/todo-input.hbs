@@ -1,4 +1,9 @@
-{{input type="text" id="new-todo" placeholder="Enter new Todo" value=newTitle enter="submitTodo"}}
 
-<!-- For some reason, the app will blow up if trying to use the following approach -->
+<!-- The app will blow up if trying to use the following approach. -->
 <!--input type="text" id="new-todo" placeholder="Enter new Todo" {{!--action="submitTodo" on="enter"--}}-->
+
+<!-- For some reason, the following won't work neither-->
+<!--input type="text" id="new-todo" placeholder="Enter new Todo" {{!--action "submitTodo" on="enter"--}}-->
+
+<!-- Correct usage -->
+{{input type="text" id="new-todo" placeholder="Enter new Todo" value=newTitle enter="submitTodo"}}

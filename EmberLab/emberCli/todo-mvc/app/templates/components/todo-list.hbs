@@ -10,17 +10,19 @@
     </span>
   <ul id="filters">
     <li>
-      <a href="all" class="selected">All</a>
+      {{#link-to "todos.index" activeClass="selected"}}All{{/link-to}}
     </li>
     <li>
-      <a href="active">Active</a>
+      {{#link-to "todos.incomplete"}}Active{{/link-to}}
     </li>
     <li>
-      <a href="completed">Completed</a>
+      {{#link-to "todos.complete"}}Completed{{/link-to}}
     </li>
   </ul>
 
   <button id="clear-completed">
-    Clear completed (1)
+    <span id="todo-count">
+      <strong>{{remaining}}</strong> {{inflection}} left
+    </span>
   </button>
 </footer>

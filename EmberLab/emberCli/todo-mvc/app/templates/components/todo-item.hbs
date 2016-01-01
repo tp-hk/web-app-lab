@@ -1,2 +1,10 @@
-<input type="checkbox" class="toggle">
-<label>{{todoReceiver.title}}</label><button class="destroy"></button>
+{{#if editing}}
+  <!-- Either one of the following will work-->
+  {{input class="edit" value=todoReceiver.title action="submitTodo"}}
+  <!--input type="text" class="edit" value=todo.title {{!--action "submitTodo"--}}-->
+{{else}}
+  {{input type="checkbox" class="toggle" checked=todoReceiver.complete}}
+  <!--input type="checkbox" class="toggle" checked="{{!--if todoReceiver.complete true--}}"-->
+  <label class="{{if todoReceiver.complete 'completed'}}" {{action "editTodo" on="doubleClick"}}>{{todoReceiver.title}}</label><button class="destroy"></button>
+  <button class="destroy" {{action "deleteTodo"}}></button>
+{{/if}}

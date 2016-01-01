@@ -1,5 +1,5 @@
 <ul id="todo-list">
   {{#each model as |todoSender|}}
-    {{todo-item todoReceiver=todoSender}}
+    {{todo-item todoReceiver=todoSender updateActionForTodoItem="updateTodo" deleteActionForTodoItem="deleteTodo"}}
   {{/each}}
 </ul>

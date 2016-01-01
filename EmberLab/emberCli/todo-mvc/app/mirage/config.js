@@ -6,7 +6,6 @@ export default function() {
       ))
     };
   });
-
   this.post('/todos', function(db, request) {
     let attrs = JSON.parse(request.requestBody);
     let todo = db.todos.insert(attrs);
@@ -18,7 +17,6 @@ export default function() {
       }
     };
   });
-
   this.patch('/todos/:id', function(db, request) {
     let attrs = JSON.parse(request.requestBody);
     let todo = db.todos.update(attrs.data.id, attrs.data.attributes);
@@ -30,6 +28,5 @@ export default function() {
       }
     };
   });
-
   this.del('/todos/:id');
 }
