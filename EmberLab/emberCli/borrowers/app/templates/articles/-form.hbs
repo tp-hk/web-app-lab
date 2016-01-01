@@ -1,0 +1,12 @@
+<form>
+  <fieldset>
+    <legend>New/Edit Article</legend>
+    {{input value=model.description placeholder="Description"}}
+    {{input value=model.notes placeholder="Notes"}}
+
+    <h6 class="errorMsg">{{errorMsg}}</h6>
+
+    <button {{action "save"}} class="primary">Save</button>
+    <button {{action "cancel"}}>Cancel</button>
+  </fieldset>
+</form>

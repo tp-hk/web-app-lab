@@ -1,0 +1,33 @@
+<h2>People Index</h2>
+
+<p>Number of people: {{model.length}}</p>
+
+<table class="primary" >
+  <thead>
+    <tr>
+      <th class="clickable" {{action "setSortBy" "firstName"}}>
+        Name
+      </th>
+      <th class="clickable" {{action "setSortBy" "totalArticles"}}>
+        # Borrowed Items
+        {{!#link-to 'friends' (query-params sortBy="totalArticles")}}
+          <!--# Borrowed Items-->
+        {{!/link-to}}
+      </th>
+      <th>Delete Person</th>
+      <th>Lend</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each model as |friend|}}
+      <tr>
+        <td>{{link-to friend.fullName "articles" friend}}</td>
+        <td>{{friend.totalArticles}}</td>
+        <td><a href="#" {{action "deletePerson" friend}}>Delete Person</a></td>
+        <td>{{link-to "Lend Article" "articles.new" friend}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+{{link-to "Create Person" "friends.new"}}

@@ -1,0 +1,49 @@
+<form {{action "save" on="submit"}}>
+  <!-- <table>
+    <tr>
+      <td><label>First Name:</label></td>
+      <td>{{input value=model.firstName}}</td>
+    </tr>
+    <tr>
+      <td><label>Last Name:</label></td>
+      <td>{{input value=model.lastName}}</td>
+    </tr>
+    <tr>
+      <td><label>Email:</label></td>
+      <td>{{input value=model.email}}</td>
+    </tr>
+    <tr>
+      <td><label>Twitter:</label></td>
+      <td>{{input value=model.twitter}}</td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div>
+          <h2>People Details</h2>
+          <p>{{model.firstName}} {{model.lastName}}</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="submit" value="Save"/>
+      </td>
+      <td>
+        <button {{action "cancel"}}>Cancel</button>
+      </td>
+    </tr>
+  </table> -->
+
+  <fieldset>
+    <legend>{{simpleProperty}}</legend>
+    {{input value=model.firstName placeholder="First Name"}}
+    {{input value=model.lastName placeholder="Last Name"}}
+    {{input value=model.email placeholder="Email"}}
+    {{input value=model.twitter placeholder="Twitter"}}
+
+    <h6 class="errorMsg">{{errorMessage}}</h6>
+
+    <input type="submit" value="Save"/>
+    <button {{action "cancel"}}>Cancel</button>
+  </fieldset>
+</form>

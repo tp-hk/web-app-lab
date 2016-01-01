@@ -1,0 +1,30 @@
+<td>{{article.description}}</td>
+<td>{{article.notes}}</td>
+<td>{{formatted-date article.createdAt 'LL'}}</td>
+<td>
+  {{#x-select value=article.state action="saveArticle"}}
+    {{#each articleStates as |state|}}
+      {{#x-option value=state}}{{state}}{{/x-option}}
+    {{/each}}
+  {{/x-select}}
+</td>
+<td>
+  {{#if article.isSaving}}
+    <p>Saving...</p>
+	{{else}}
+		<p>{{statusMessage}}</p>
+  {{/if}}
+</td>
+
+
+<!--
+***Properties of article***
+description
+notes
+createdAt
+state
+
+***Properties of DS.model***
+  isSaving
+  hasDirtyAttributes
+-->

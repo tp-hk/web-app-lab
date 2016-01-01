@@ -1,0 +1,312 @@
+<NotepadPlus>
+    <Project name="app">
+        <Folder name="adapters">
+            <File name="app\adapters\application.js" />
+        </Folder>
+        <Folder name="components">
+            <Folder name="articles">
+                <File name="app\components\articles\article-row.js" />
+            </Folder>
+            <File name="app\components\.gitkeep" />
+        </Folder>
+        <Folder name="controllers">
+            <Folder name="articles">
+                <File name="app\controllers\articles\index.js" />
+                <File name="app\controllers\articles\new.js" />
+            </Folder>
+            <Folder name="friends">
+                <File name="app\controllers\friends\base.js" />
+                <File name="app\controllers\friends\edit.js" />
+                <File name="app\controllers\friends\new.js" />
+            </Folder>
+            <File name="app\controllers\.gitkeep" />
+        </Folder>
+        <Folder name="helpers">
+            <File name="app\helpers\.gitkeep" />
+            <File name="app\helpers\formatted-date.js" />
+        </Folder>
+        <Folder name="models">
+            <File name="app\models\.gitkeep" />
+            <File name="app\models\article.js" />
+            <File name="app\models\friend.js" />
+        </Folder>
+        <Folder name="routes">
+            <Folder name="articles">
+                <File name="app\routes\articles\index.js" />
+                <File name="app\routes\articles\new.js" />
+            </Folder>
+            <Folder name="friends">
+                <File name="app\routes\friends\edit.js" />
+                <File name="app\routes\friends\index.js" />
+                <File name="app\routes\friends\new.js" />
+                <File name="app\routes\friends\show.js" />
+            </Folder>
+            <File name="app\routes\.gitkeep" />
+            <File name="app\routes\application.js" />
+            <File name="app\routes\articles.js" />
+            <File name="app\routes\friends.js" />
+            <File name="app\routes\index.js" />
+        </Folder>
+        <Folder name="styles">
+            <File name="app\styles\app.css" />
+        </Folder>
+        <Folder name="templates">
+            <Folder name="articles">
+                <File name="app\templates\articles\-form.hbs" />
+                <File name="app\templates\articles\index.hbs" />
+                <File name="app\templates\articles\new.hbs" />
+            </Folder>
+            <Folder name="components">
+                <Folder name="articles">
+                    <File name="app\templates\components\articles\article-row.hbs" />
+                </Folder>
+                <File name="app\templates\components\.gitkeep" />
+            </Folder>
+            <Folder name="friends">
+                <File name="app\templates\friends\-form.hbs" />
+                <File name="app\templates\friends\edit.hbs" />
+                <File name="app\templates\friends\index.hbs" />
+                <File name="app\templates\friends\new.hbs" />
+                <File name="app\templates\friends\show.hbs" />
+            </Folder>
+            <Folder name="partials">
+                <File name="app\templates\partials\-header.hbs" />
+            </Folder>
+            <File name="app\templates\application.hbs" />
+            <File name="app\templates\articles.hbs" />
+            <File name="app\templates\friends.hbs" />
+            <File name="app\templates\index.hbs" />
+        </Folder>
+        <Folder name="utils">
+            <File name="app\utils\date-helpers.js" />
+        </Folder>
+        <File name="app\app.js" />
+        <File name="app\index.html" />
+        <File name="app\router.js" />
+    </Project>
+    <Project name="borrowers">
+        <Folder name="app">
+            <Folder name="adapters">
+                <File name="app\adapters\application.js" />
+            </Folder>
+            <Folder name="components">
+                <Folder name="articles">
+                    <File name="app\components\articles\article-row.js" />
+                </Folder>
+                <File name="app\components\.gitkeep" />
+            </Folder>
+            <Folder name="controllers">
+                <Folder name="articles">
+                    <File name="app\controllers\articles\index.js" />
+                    <File name="app\controllers\articles\new.js" />
+                </Folder>
+                <Folder name="friends">
+                    <File name="app\controllers\friends\base.js" />
+                    <File name="app\controllers\friends\edit.js" />
+                    <File name="app\controllers\friends\new.js" />
+                </Folder>
+                <File name="app\controllers\.gitkeep" />
+            </Folder>
+            <Folder name="helpers">
+                <File name="app\helpers\.gitkeep" />
+                <File name="app\helpers\formatted-date.js" />
+            </Folder>
+            <Folder name="models">
+                <File name="app\models\.gitkeep" />
+                <File name="app\models\article.js" />
+                <File name="app\models\friend.js" />
+            </Folder>
+            <Folder name="routes">
+                <Folder name="articles">
+                    <File name="app\routes\articles\index.js" />
+                    <File name="app\routes\articles\new.js" />
+                </Folder>
+                <Folder name="friends">
+                    <File name="app\routes\friends\edit.js" />
+                    <File name="app\routes\friends\index.js" />
+                    <File name="app\routes\friends\new.js" />
+                    <File name="app\routes\friends\show.js" />
+                </Folder>
+                <File name="app\routes\.gitkeep" />
+                <File name="app\routes\application.js" />
+                <File name="app\routes\articles.js" />
+                <File name="app\routes\friends.js" />
+                <File name="app\routes\index.js" />
+            </Folder>
+            <Folder name="styles">
+                <File name="app\styles\app.css" />
+            </Folder>
+            <Folder name="templates">
+                <Folder name="articles">
+                    <File name="app\templates\articles\-form.hbs" />
+                    <File name="app\templates\articles\index.hbs" />
+                    <File name="app\templates\articles\new.hbs" />
+                </Folder>
+                <Folder name="components">
+                    <Folder name="articles">
+                        <File name="app\templates\components\articles\article-row.hbs" />
+                    </Folder>
+                    <File name="app\templates\components\.gitkeep" />
+                </Folder>
+                <Folder name="friends">
+                    <File name="app\templates\friends\-form.hbs" />
+                    <File name="app\templates\friends\edit.hbs" />
+                    <File name="app\templates\friends\index.hbs" />
+                    <File name="app\templates\friends\new.hbs" />
+                    <File name="app\templates\friends\show.hbs" />
+                </Folder>
+                <Folder name="partials">
+                    <File name="app\templates\partials\-header.hbs" />
+                </Folder>
+                <File name="app\templates\application.hbs" />
+                <File name="app\templates\articles.hbs" />
+                <File name="app\templates\friends.hbs" />
+                <File name="app\templates\index.hbs" />
+            </Folder>
+            <Folder name="utils">
+                <File name="app\utils\date-helpers.js" />
+            </Folder>
+            <File name="app\app.js" />
+            <File name="app\index.html" />
+            <File name="app\router.js" />
+        </Folder>
+        <Folder name="config">
+            <File name="config\environment.js" />
+        </Folder>
+        <Folder name="dist">
+            <Folder name="assets">
+                <File name="dist\assets\borrowers.css" />
+                <File name="dist\assets\borrowers.js" />
+                <File name="dist\assets\borrowers.map" />
+                <File name="dist\assets\ember-data.js.map" />
+                <File name="dist\assets\failed.png" />
+                <File name="dist\assets\passed.png" />
+                <File name="dist\assets\test-loader.js" />
+                <File name="dist\assets\test-support.css" />
+                <File name="dist\assets\test-support.js" />
+                <File name="dist\assets\test-support.map" />
+                <File name="dist\assets\tests.js" />
+                <File name="dist\assets\tests.map" />
+                <File name="dist\assets\vendor.css" />
+                <File name="dist\assets\vendor.js" />
+                <File name="dist\assets\vendor.map" />
+            </Folder>
+            <Folder name="font">
+                <File name="dist\font\fontello.eot" />
+                <File name="dist\font\fontello.svg" />
+                <File name="dist\font\fontello.ttf" />
+                <File name="dist\font\fontello.woff" />
+            </Folder>
+            <Folder name="tests">
+                <File name="dist\tests\index.html" />
+            </Folder>
+            <File name="dist\crossdomain.xml" />
+            <File name="dist\index.html" />
+            <File name="dist\robots.txt" />
+            <File name="dist\testem.js" />
+        </Folder>
+        <Folder name="public">
+            <File name="public\crossdomain.xml" />
+            <File name="public\robots.txt" />
+        </Folder>
+        <Folder name="tests">
+            <Folder name="helpers">
+                <File name="tests\helpers\destroy-app.js" />
+                <File name="tests\helpers\module-for-acceptance.js" />
+                <File name="tests\helpers\resolver.js" />
+                <File name="tests\helpers\start-app.js" />
+            </Folder>
+            <Folder name="integration">
+                <Folder name="components">
+                    <Folder name="articles">
+                        <File name="tests\integration\components\articles\article-row-test.js" />
+                    </Folder>
+                </Folder>
+                <File name="tests\integration\.gitkeep" />
+            </Folder>
+            <Folder name="unit">
+                <Folder name="adapters">
+                    <File name="tests\unit\adapters\application-test.js" />
+                </Folder>
+                <Folder name="controllers">
+                    <Folder name="articles">
+                        <File name="tests\unit\controllers\articles\index-test.js" />
+                        <File name="tests\unit\controllers\articles\new-test.js" />
+                    </Folder>
+                    <Folder name="friends">
+                        <File name="tests\unit\controllers\friends\base-test.js" />
+                        <File name="tests\unit\controllers\friends\edit-test.js" />
+                        <File name="tests\unit\controllers\friends\new-test.js" />
+                    </Folder>
+                </Folder>
+                <Folder name="helpers">
+                    <File name="tests\unit\helpers\formatted-date-test.js" />
+                </Folder>
+                <Folder name="models">
+                    <File name="tests\unit\models\article-test.js" />
+                    <File name="tests\unit\models\friend-test.js" />
+                </Folder>
+                <Folder name="routes">
+                    <Folder name="articles">
+                        <File name="tests\unit\routes\articles\index-test.js" />
+                        <File name="tests\unit\routes\articles\new-test.js" />
+                    </Folder>
+                    <Folder name="friends">
+                        <File name="tests\unit\routes\friends\edit-test.js" />
+                        <File name="tests\unit\routes\friends\index-test.js" />
+                        <File name="tests\unit\routes\friends\new-test.js" />
+                        <File name="tests\unit\routes\friends\show-test.js" />
+                    </Folder>
+                    <File name="tests\unit\routes\articles-test.js" />
+                    <File name="tests\unit\routes\friends-test.js" />
+                    <File name="tests\unit\routes\index-test.js" />
+                </Folder>
+                <Folder name="utils">
+                    <File name="tests\unit\utils\date-helpers-test.js" />
+                </Folder>
+                <File name="tests\unit\.gitkeep" />
+            </Folder>
+            <File name="tests\.jshintrc" />
+            <File name="tests\index.html" />
+            <File name="tests\test-helper.js" />
+        </Folder>
+        <Folder name="tmp">
+            <Folder name="core_object-dest_dir-2nBfiEeU.tmp" />
+            <Folder name="core_object-dest_dir-ASOv1iwp.tmp" />
+            <Folder name="core_object-dest_dir-dx2HVlbI.tmp" />
+            <Folder name="core_object-dest_dir-W1bBrakn.tmp" />
+            <Folder name="core_object-input_staging-0iWc9n46.tmp" />
+            <Folder name="core_object-input_staging-jyEohvJG.tmp" />
+            <Folder name="core_object-input_staging-keZ23u7T.tmp" />
+            <Folder name="core_object-input_staging-pQALnjg2.tmp" />
+        </Folder>
+        <Folder name="vendor">
+            <Folder name="fontello">
+                <Folder name="font">
+                    <File name="vendor\fontello\font\.DS_Store" />
+                    <File name="vendor\fontello\font\fontello.eot" />
+                    <File name="vendor\fontello\font\fontello.svg" />
+                    <File name="vendor\fontello\font\fontello.ttf" />
+                    <File name="vendor\fontello\font\fontello.woff" />
+                </Folder>
+                <File name="vendor\fontello\.DS_Store" />
+                <File name="vendor\fontello\fontello.css" />
+            </Folder>
+            <File name="vendor\.gitkeep" />
+            <File name="vendor\fontello.zip" />
+        </Folder>
+        <File name=".bowerrc" />
+        <File name=".editorconfig" />
+        <File name=".ember-cli" />
+        <File name=".gitignore" />
+        <File name=".jshintrc" />
+        <File name=".travis.yml" />
+        <File name=".watchmanconfig" />
+        <File name="bower.json" />
+        <File name="ember-cli-build.js" />
+        <File name="npm-debug.log" />
+        <File name="package.json" />
+        <File name="README.md" />
+        <File name="testem.json" />
+    </Project>
+</NotepadPlus>

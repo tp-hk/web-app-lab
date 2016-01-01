@@ -1,0 +1,29 @@
+<!-- <ul>
+  <li>{{model.firstName}}</li>
+  <li>{{model.lastName}}</li>
+  <li>{{model.email}}</li>
+  <li>{{model.twitter}}</li>
+</ul> -->
+
+<div class="card friend-profile">
+  <div class="friend-info full">
+    {{cat-pic width=300 height=300}}
+    <div class="friend-profile-text">
+      <p>{{model.fullName}}</p>
+      <p>{{model.email}}</p>
+      <p>{{model.twitter}}</p>
+    </div>
+    <ul class="friend-profile-links">
+      <li>
+          <!-- Either way will work: -->
+          {{link-to "Edit" "friends.edit" model}}
+          <!-- <button {{action "startEditingFriend" model}}>Edit</button> -->
+      </li>
+      <li><a href="#" {{action "deletePerson" model}}>Delete</a></li>
+      <li><button {{action "backToShowAllFriends"}}>Back</button></li>
+    </ul>
+  </div>
+  <div class="articles-container">
+    {{outlet}}
+  </div>
+</div>

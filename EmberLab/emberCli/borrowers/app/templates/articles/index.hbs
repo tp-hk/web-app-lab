@@ -1,0 +1,24 @@
+<table class="primary">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Notes</th>
+      <th>Borrowed Since</th>
+      <th>State</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+    {{#each model as |eachArticle|}}
+      {{articles.article-row
+      article=eachArticle
+      saveFromArticleRowComponent="saveFromArticleIndexRoute"
+      articleStates=possibleStates
+      }}
+    {{/each}}
+</table>
+
+<!--<div class="statusFilter">-->
+  <!--<button {{action "setFilter"}}>Borrowed / All</button>-->
+<!--</div>-->
+
+<p>{{link-to 'Lend Article' 'articles.new'}}</p>
