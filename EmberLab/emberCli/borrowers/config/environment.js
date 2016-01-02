@@ -2,6 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
+		host: 'http://api.ember-cli-101.com',
     modulePrefix: 'borrowers',
     environment: environment,
     baseURL: '/',
@@ -19,7 +20,7 @@ module.exports = function(environment) {
     },
       contentSecurityPolicy: {
         'default-src': "'none'",
-        'script-src': "'self' *tpun:49152",
+        'script-src': "'self'",
         'font-src': "'self'",
         'connect-src': "'self'",
         'img-src': "'self' data: *loremflickr.com",
@@ -49,7 +50,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+		ENV.baseURL = '/Ember/emberCli101-borrowers'
   }
 
   return ENV;

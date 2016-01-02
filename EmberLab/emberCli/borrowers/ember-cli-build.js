@@ -21,17 +21,18 @@ module.exports = function(defaults) {
   // along with the exports of each module as its value.
   app.import('vendor/fontello/fontello.css');
   app.import('vendor/fontello/font/fontello.ttf', {
-    destDir: 'font'
+    destDir: 'assets/font'
   });
   app.import('vendor/fontello/font/fontello.eot', {
-    destDir: 'font'
+    destDir: 'assets/font'
   });
   app.import('vendor/fontello/font/fontello.svg', {
-    destDir: 'font'
+    destDir: 'assets/font'
   });
   app.import('vendor/fontello/font/fontello.woff', {
-    destDir: 'font'
+    destDir: 'assets/font'
   });
+	
 
   app.import('bower_components/picnic/releases/picnic.min.css');
   app.import('bower_components/picnic/releases/plugins.min.css');
