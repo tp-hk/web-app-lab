@@ -7,7 +7,7 @@ export default Ember.Component.extend({
 	statusMessage: '',
 	stateChanged: Ember.observer('article.state', function(){
 		var article = this.get('article');
-		this.set('statusMessage', article.get('state'))
+		this.set('statusMessage', article.get('state'));
 	}),
   actions: {
     saveArticle(){
@@ -16,7 +16,7 @@ export default Ember.Component.extend({
       let article = this.get('article');
       if(article.get('hasDirtyAttributes')){
         this.sendAction('saveFromArticleRowComponent', article);
-      }        
+      }
     }
   }
 });

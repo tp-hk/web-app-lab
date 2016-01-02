@@ -12,8 +12,9 @@ export default Ember.Route.extend({
       console.log('exiting');
 
       var model = controller.get('model');
-      if(model.get('isNew'))
+      if(model.get('isNew')){
         model.destroyRecord();
+      }
     }
   },
   actions:{

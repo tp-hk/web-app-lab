@@ -12,8 +12,9 @@ export default Ember.Route.extend({
 
       // remove uncommitted record
       var model = controller.get('model');
-      if(model.get('isNew'))
+      if(model.get('isNew')){
         model.destroyRecord();
+      }
     }
     console.log("resetController: isExiting = false");
   },
