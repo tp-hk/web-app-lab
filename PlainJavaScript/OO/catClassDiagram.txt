@@ -1,0 +1,234 @@
+class Cat {
+  string name
+  
+  string size
+  bool isVocal
+  bool isSociable
+  int age
+  string gender
+  string[] image
+  
+  date foundOn
+  string foundAt
+  
+  string state
+  bool isHungry
+  bool isSick
+  bool needsPlay
+  
+  AdultCat mom
+  Cat[] friends
+  
+  string vaccinationDueOn
+  HealthRecord[] healthRecords
+  
+  AdoptionRecord[] adoptions
+  bool isAdopted  
+  
+  date diedOn    
+  
+  void constructor()
+  void sleep(int duration)
+  void hide(int duration)
+  void meow()
+  void move(Room toRoom)
+  void formGroup(Cat[] groupmates)
+  void play(Cat[] playmates)
+  void fight(Cat[] fightmates)
+  void beFriend(Cat friend)
+  void unfriend(Cat friend)
+  void die()
+}
+
+class BabyCat{
+  bool needsPottyTraining
+  
+  bool useBathroom(int duration)
+}
+
+
+class AdultCat{
+  string[] favoriteFood
+  Cat[] kids
+  string spayingDueOn
+  
+  void hasKids()
+  void useBathroom(int duration)
+}
+
+
+class Shelter {  
+  Cat[] cats
+  Room[] rooms
+  
+  void acceptCat(Cat cat)
+  
+  void pottyTraining(Cat cat, int duration)
+  void feed(Cat cat, optional string flavor)
+  void bathe(Cat cat)
+  void remove(Cat cat)
+  
+  void takeCareByVet(Cat cat, string activity)  
+  -void vaccine(Cat cat)
+  -void spay(Cat cat)
+  -void sick(Cat cat)
+  -void initalCheckUp(Cat cat)
+  
+  bool meetUp(Adoptor adoptor, Cat cat)
+}
+
+class Room {
+ string roomName 
+ Cat[] cats
+}
+
+class AdoptionRecord {
+  Adoptor adoptor
+  date adoptedOn
+}
+
+
+class HealthRecord {
+  date visitedOn
+  string activity
+}
+
+
+class Adoptor {
+  string name
+  Cat[] adoptedCats
+  
+  void visit()
+  void adoptCat(Cat cat)
+}
+
+note "Shelter: activity can be:\nvaccine, spay, sick, initialCheckup\nthey're handled by resp. methods" as N1
+note "Room: roomType can be:\ncanteen\n bathroom, bedroom, commonArea,\nvet, meetUpArea" as N2
+note "Cat: Cat ctor takes:\nstring name, string gender, date foundOn,\nstring foundAt, string[] img" as N3
+
+AdultCat <|-- Cat
+BabyCat <|-- Cat
+Adoptor *-- Shelter
+Room -- Cat
+Room *-- Shelter
+AdoptionRecord *-- Cat
+HealthRecord *-- Cat
+AdoptionRecord -- Adoptor
+Cat *-- Shelter
+class Cat {
+  string name
+  
+  string size
+  bool isVocal
+  bool isSociable
+  int age
+  string gender
+  string[] image
+  
+  date foundOn
+  string foundAt
+  
+  string state
+  bool isHungry
+  bool isSick
+  bool needsPlay
+  
+  AdultCat mom
+  Cat[] friends
+  
+  string vaccinationDueOn
+  HealthRecord[] healthRecords
+  
+  AdoptionRecord[] adoptions
+  bool isAdopted  
+  
+  date diedOn    
+  
+  void constructor()
+  void sleep(int duration)
+  void hide(int duration)
+  void meow()
+  void move(Room toRoom)
+  void formGroup(Cat[] groupmates)
+  void play(Cat[] playmates)
+  void fight(Cat[] fightmates)
+  void beFriend(Cat friend)
+  void unfriend(Cat friend)
+  void die()
+}
+
+class BabyCat{
+  bool needsPottyTraining
+  
+  bool useBathroom(int duration)
+}
+
+
+class AdultCat{
+  string[] favoriteFood
+  Cat[] kids
+  string spayingDueOn
+  
+  void hasKids()
+  void useBathroom(int duration)
+}
+
+
+class Shelter {  
+  Cat[] cats
+  Room[] rooms
+  
+  void acceptCat(Cat cat)
+  
+  void pottyTraining(Cat cat, int duration)
+  void feed(Cat cat, optional string flavor)
+  void bathe(Cat cat)
+  void remove(Cat cat)
+  
+  void takeCareByVet(Cat cat, string activity)  
+  -void vaccine(Cat cat)
+  -void spay(Cat cat)
+  -void sick(Cat cat)
+  -void initalCheckUp(Cat cat)
+  
+  bool meetUp(Adoptor adoptor, Cat cat)
+}
+
+class Room {
+ string roomName 
+ Cat[] cats
+}
+
+class AdoptionRecord {
+  Adoptor adoptor
+  date adoptedOn
+}
+
+
+class HealthRecord {
+  date visitedOn
+  string activity
+}
+
+
+class Adoptor {
+  string name
+  Cat[] adoptedCats
+  
+  void visit()
+  void adoptCat(Cat cat)
+}
+
+note "Shelter: activity can be:\nvaccine, spay, sick, initialCheckup\nthey're handled by resp. methods" as N1
+note "Room: roomType can be:\ncanteen\n bathroom, bedroom, commonArea,\nvet, meetUpArea" as N2
+note "Cat: Cat ctor takes:\nstring name, string gender, date foundOn,\nstring foundAt, string[] img" as N3
+
+AdultCat <|-- Cat
+BabyCat <|-- Cat
+Adoptor *-- Shelter
+Room -- Cat
+Room *-- Shelter
+AdoptionRecord *-- Cat
+HealthRecord *-- Cat
+AdoptionRecord -- Adoptor
+Cat *-- Shelter
