@@ -40,11 +40,31 @@ class CommonArea extends Room{
 
 let instance = null;
 class Shelter{
+  static findRoom(roomName){
+    return instance.rooms.find(function(element, index, array){
+      if(element.constructor.name === roomName)
+        return element;
+    });
+  }
+
+  static get rooms(){
+    return instance.rooms;
+  }
+
+  //static name(shelterName){
+  //  if(instance._name === "")
+  //    console.log("before: " + instance._name);
+  //
+  //  instance._name = shelterName;
+  //  console.log("after: " + instance._name);
+  //}
+
   constructor(){
     if(!instance){
       instance = this;
     }
 
+    //instance._name = "";
     instance.rooms = [ new Canteen(), new Bathroom(), new Bedroom(), new MeetupRoom(), new CommonArea()];
 
     return instance;

@@ -1,11 +1,13 @@
 'use strict';
 
-class Cat{
+//var ageSymbol = Symbol();
+
+class Cat {
   // getter method for class (static) property
-  static get States(){
+  static get States() {
     return {
       ROAMING: "roaming",
-      SLEEPING : "sleeping",
+      SLEEPING: "sleeping",
       HIDING: "hiding",
       EATING: "eating",
       SEEINGVET: "seeingVet",
@@ -18,62 +20,148 @@ class Cat{
   /**
    * Properties
    **/
-  get name(){ return this._name; }
+  get name() {
+    return this._name;
+  }
 
-  get size(){ return this._size; }
-  set size(value){ this._size = value; }
+  get size() {
+    return this._size;
+  }
 
-  get isVocal(){ return this._isVocal; }
-  set isVocal(value){ this._isVocal = value; }
+  set size(value) {
+    this._size = value;
+  }
 
-  get isSociable(){ return this._isSociable; }
-  set isSociable(value){ this._isSociable = value; }
+  get isVocal() {
+    return this._isVocal;
+  }
 
-  get age(){ return this._age; }
-  set age(value){ this._age = value; }
+  set isVocal(value) {
+    this._isVocal = value;
+  }
 
-  get gender(){ return this._gender; }
+  get isSociable() {
+    return this._isSociable;
+  }
 
-  get imgs(){ return this._imgs; }
-  set imgs(value){ this._imgs = value; }
+  set isSociable(value) {
+    this._isSociable = value;
+  }
 
-  get foundOn(){ return this._foundOn; }
-  get foundAt(){ return this._foundAt; }
+  get age() {
+    return this[ageSymbol];
+    //return this._age;
+  }
 
-  get state(){ return this._state; }
-  set state(value){ this._state = value; }
+  set age(value) {
+    //this[ageSymbol] = value > 0 ? value: 0.5;
+    //this._age = value;
+  }
 
-  get isHungry(){ return this._isHungry; }
-  set isHungry(value){ this._isHungry = value; }
+  get gender() {
+    return this._gender;
+  }
 
-  get isSick(){ return this._isSick; }
-  set isSick(value){ this._isSick = value; }
+  get imgs() {
+    return this._imgs;
+  }
 
-  get needsPlay(){ return this._needsPlay; }
-  set needsPlay(value){ this._needsPlay = value; }
+  set imgs(value) {
+    this._imgs = value;
+  }
 
-  get mom(){ return this._mom; }
-  set mom(value){ this._mom = value; }
+  get foundOn() {
+    return this._foundOn;
+  }
 
-  get friends(){ return this._friends; }
-  set friends(value){ this._friends = value; }
+  get foundAt() {
+    return this._foundAt;
+  }
 
-  get vaccinationDueOn(){ return this._vaccinationDueOn; }
-  set vaccinationDueOn(value){ this._vaccinationDueOn = value; }
+  get state() {
+    return this._state;
+  }
 
-  get healthRecords(){ return this._healthRecords; }
-  set healthRecords(value){ this._healthRecords = value; }
+  set state(value) {
+    this._state = value;
+  }
 
-  get adoptors(){ return this._adoptors; }
-  set adoptors(value){ this._adoptors = value; }
+  get isHungry() {
+    return this._isHungry;
+  }
 
-  get diedOn(){ return this._diedOn; }
-  set diedOn(value){ this._diedOn = value; }
+  set isHungry(value) {
+    this._isHungry = value;
+  }
+
+  get isSick() {
+    return this._isSick;
+  }
+
+  set isSick(value) {
+    this._isSick = value;
+  }
+
+  get needsPlay() {
+    return this._needsPlay;
+  }
+
+  set needsPlay(value) {
+    this._needsPlay = value;
+  }
+
+  get mom() {
+    return this._mom;
+  }
+
+  set mom(value) {
+    this._mom = value;
+  }
+
+  get friends() {
+    return this._friends;
+  }
+
+  set friends(value) {
+    this._friends = value;
+  }
+
+  get vaccinationDueOn() {
+    return this._vaccinationDueOn;
+  }
+
+  set vaccinationDueOn(value) {
+    this._vaccinationDueOn = value;
+  }
+
+  get healthRecords() {
+    return this._healthRecords;
+  }
+
+  set healthRecords(value) {
+    this._healthRecords = value;
+  }
+
+  get adoptors() {
+    return this._adoptors;
+  }
+
+  set adoptors(value) {
+    this._adoptors = value;
+  }
+
+  get diedOn() {
+    return this._diedOn;
+  }
+
+  set diedOn(value) {
+    this._diedOn = value;
+  }
 
   /**
-  * Methods
-  **/
-  constructor(name, gender, foundOn, foundAt, imgs, size){
+   * Methods
+   **/
+  constructor(name, gender, foundOn, foundAt, imgs, size) {
     this._name = name;
     this._gender = gender;
     this._foundOn = foundOn;
@@ -82,73 +170,89 @@ class Cat{
     this._size = size;
     this._state = Cat.States.ROAMING;
 
-    this.shelter = new Shelter();
     this.move("CommonArea");
 
-    // increase sleep interval if age <=2
-    setInterval(()=>{ this.sleep(); }, 10000);
-    setInterval(()=>{ this.hide(); }, Utils.random(24000, 48000));
+   //increase sleep interval if age <=2
+    setInterval(()=> {
+      this.sleep();
+    }, 10000);
+
+    setInterval(()=> {
+      this.hide();
+    }, Utils.random(24000, 48000));
+
+    setInterval(()=> {
+      this.formGroup();
+    }, Utils.random(5000, 6000));
+
+    //Shelter.name("***" + this.name);
   }
 
-  sleep(){
-    if(this.state !== Cat.States.HIDING &&
+  sleep() {
+    if (this.state !== Cat.States.HIDING &&
       this.state !== Cat.States.ROAMING)
-        return;
+      return;
 
     // increase sleep time if age <=2
     this._changeState(Cat.States.SLEEPING, Cat.States.ROAMING, 8000);
+
   }
 
-  hide(){
-    if(this.state !== Cat.States.ROAMING)
-    return;
+  hide() {
+    if (this.state !== Cat.States.ROAMING)
+      return;
 
     var hideDuration = 1000;
-    if(!this.isSociable)
+    if (!this.isSociable)
       hideDuration *= 2;
 
+    console.log(`${this.name} will hide for ${hideDuration}`);
     this._changeState(Cat.States.HIDING, Cat.States.ROAMING, hideDuration);
   }
 
   // computed method name
-  ['me' + 'ow'](){
-    if(this.state === Cat.States.SLEEPING ||
+  ['me' + 'ow']() {
+    if (this.state === Cat.States.SLEEPING ||
       this.state === Cat.States.HIDING)
       return;
 
     console.log(`${this.name} meows`);
   }
 
-  move(roomName){
-    if(!this.currentRoom){
-      this.currentRoom = this._findRoom(roomName);
-    }
-    else{
+  move(roomName) {
+    if (this.currentRoom) {
       var index = this.currentRoom.cats.indexOf(this);
-      if(index > -1)
+      if (index > -1)
         this.currentRoom.cats.splice(index, 1);
-
-      this.currentRoom = this._findRoom(roomName);
     }
 
+    this.currentRoom = Shelter.findRoom(roomName);
     this.currentRoom.cats.push(this);
     console.log(`${this.name} is at ${this.currentRoom.roomName}`);
   }
 
-  _changeState(fromState, toState, duration){
+  formGroup() {
+    var cats = Shelter.findRoom("CommonArea").cats;
+    console.log(`${cats.length} cats in commonArea`);
+
+    // if cat count <=4, form 1 group. If > 4 cats, break down into groups
+
+    // within each group, either play or fight
+
+    // if play, cat becomes social
+
+    // if fight, cat becomes vocal
+
+  }
+
+  // Private functions
+  _changeState(fromState, toState, duration) {
     this.state = fromState;
     console.log(`${this.name} is ${this.state}`);
 
-    setTimeout(()=>{
+    setTimeout(()=> {
       this.state = toState;
       console.log(`${this.name} is ${this.state}`)
     }, duration);
-  }
-
-  _findRoom(roomName){
-    return this.shelter.rooms.find(function(element, index, array){
-      if(element.constructor.name === roomName)
-        return element;
-    });
   }
 }
