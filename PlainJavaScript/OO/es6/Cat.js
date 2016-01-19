@@ -1,8 +1,7 @@
-'use strict';
+import {Shelter} from './Shelter';
+import * as utils from './Utils';
 
-//var ageSymbol = Symbol();
-
-class Cat {
+export class Cat {
   // getter method for class (static) property
   static get States() {
     return {
@@ -172,18 +171,18 @@ class Cat {
 
     this.move("CommonArea");
 
-   //increase sleep interval if age <=2
+    //increase sleep interval if age <=2
     setInterval(()=> {
       this.sleep();
     }, 10000);
 
     setInterval(()=> {
       this.hide();
-    }, Utils.random(24000, 48000));
+    }, utils.random(24000, 48000));
 
     setInterval(()=> {
       this.formGroup();
-    }, Utils.random(5000, 6000));
+    }, utils.random(5000, 6000));
 
     //Shelter.name("***" + this.name);
   }
@@ -232,8 +231,11 @@ class Cat {
   }
 
   formGroup() {
-    var cats = Shelter.findRoom("CommonArea").cats;
-    console.log(`${cats.length} cats in commonArea`);
+    //var cats = Shelter.findRoom("CommonArea").cats;
+    //console.log(`${cats.length} cats in commonArea`);
+
+    var room = Shelter.commonArea;
+    room.formGroup();
 
     // if cat count <=4, form 1 group. If > 4 cats, break down into groups
 

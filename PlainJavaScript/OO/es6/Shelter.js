@@ -1,6 +1,4 @@
-'use strict';
-
-class Room{
+export class Room{
 
   get roomName(){ return this._roomName; }
   set roomName(value){ this._roomName = value; }
@@ -14,32 +12,40 @@ class Room{
   }
 }
 
-class Canteen extends Room{
+export class Canteen extends Room{
   constructor(){
     super("canteen");
   }
 }
-class Bathroom extends Room{
+export class Bathroom extends Room{
   constructor(){
     super("bathroom");
   }
 }
-class Bedroom extends Room{
+
+export class Bedroom extends Room{
   constructor(){
     super("bedroom");
-  }}
-class MeetupRoom extends Room{
+  }
+}
+
+export class MeetupRoom extends Room{
   constructor(){
     super("meetupRoom");
   }
 }
-class CommonArea extends Room{
+export class CommonArea extends Room{
   constructor(){
     super("commonArea");
-  }}
+  }
+
+  formGroup(){
+    console.log(`common room has ${this.cats.length} cats`);
+  }
+}
 
 let instance = null;
-class Shelter{
+export class Shelter{
   static findRoom(roomName){
     return instance.rooms.find(function(element, index, array){
       if(element.constructor.name === roomName)
@@ -51,14 +57,6 @@ class Shelter{
     return instance.rooms;
   }
 
-  //static name(shelterName){
-  //  if(instance._name === "")
-  //    console.log("before: " + instance._name);
-  //
-  //  instance._name = shelterName;
-  //  console.log("after: " + instance._name);
-  //}
-
   constructor(){
     if(!instance){
       instance = this;
@@ -68,5 +66,33 @@ class Shelter{
     instance.rooms = [ new Canteen(), new Bathroom(), new Bedroom(), new MeetupRoom(), new CommonArea()];
 
     return instance;
+  }
+
+  //static name(shelterName){
+  //  if(instance._name === "")
+  //    console.log("before: " + instance._name);
+  //
+  //  instance._name = shelterName;
+  //  console.log("after: " + instance._name);
+  //}
+
+  static get canteen(){
+    return instance.rooms[0];
+  }
+
+  static get bathroom(){
+    return instance.rooms[1];
+  }
+
+  static get bedroom(){
+    return instance.rooms[2];
+  }
+
+  static get meetupRoom(){
+    return instance.rooms[3];
+  }
+
+  static get commonArea(){
+    return instance.rooms[4];
   }
 }
