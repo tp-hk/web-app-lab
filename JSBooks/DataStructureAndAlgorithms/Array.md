@@ -15,7 +15,7 @@
   - arr.toString(); // generic methods, applicable to other data structures as well. Elements delimited by commas
   - console.log(arr); // print methods such as console.log(err) will call toString() automatically
   
- - [Array mutators](https://jsfiddle.net/7vap1hLs/5/)
+- [Array mutators](https://jsfiddle.net/7vap1hLs/5/)
   - Remove items 
     - var removedItem = arr.shift();  // remove the first item
     - var removedItem = arr.pop();  // rmeove the last item
@@ -30,8 +30,18 @@
   - var sortedArr = arr.sort(), var sortedArr = arr.sort(sortingFunction)
   
 - [Iterator functions](https://jsfiddle.net/d09so86p/1)
-  - arr1.forEach(iteratorFunction);
-  - var doAllMatch = arr1.every(callback);
-  - var doSomeMatch = arr1.some(callback);
-  - var result = arr1.reduce(callback, initValue);  // go through items from left to right
-  - var result = arr1.reduceRight(callback, initValue);   // go through items from right to left
+  - Non-array generating functions
+    - arr1.forEach(iteratorFunction);
+    - var doAllMatch = arr1.every(callback);
+    - var doSomeMatch = arr1.some(callback);
+    - var result = arr1.reduce(callback, initValue);  // go through items from left to right
+    - var result = arr1.reduceRight(callback, initValue);   // go through items from right to left
+  - Array generating functions
+    - var arr2 = arr1.map(mapFunction);
+    - var arr2 = arr1.filter(filterFunction);
+  
+  
+  
+  
+  
+  
