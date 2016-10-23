@@ -29,7 +29,7 @@
   - var reversedArr = arr.reverse();
   - var sortedArr = arr.sort(), var sortedArr = arr.sort(sortingFunction)
   
-- [Iterator functions](https://jsfiddle.net/d09so86p/1)
+- [Iterator functions](https://jsfiddle.net/d09so86p/3/)
   - Non-array generating functions
     - arr1.forEach(iteratorFunction);
     - var doAllMatch = arr1.every(callback);
