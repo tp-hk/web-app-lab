@@ -92,19 +92,30 @@ function CArray(numElements) {
     }
 
     this.dataStore = tempArr;
+  }
 
-    // var temp, inner;
-    // for (var outer = 1; outer <= this.dataStore.length - 1; ++outer) {
-    //   temp = this.dataStore[outer];
-    //   inner = outer;
-    //   while (inner > 0 && (this.dataStore[inner - 1] >= temp)) {
-    //     this.dataStore[inner] = this.dataStore[inner - 1];
-    //     --inner;
-    //   }
-    //   this.dataStore[inner] = temp;
-    // }
+  this.shellSort = function () {
+    let n = Math.floor(this.dataStore.length/2);
+    while (n > 0) {
+      for (let i = 0; (i + n) < this.dataStore.length; i++) {
+        let j = i + n;
+        let k = i;
+
+        while(k >=0){
+          if(this.dataStore[j] >= this.dataStore[k])
+            break;
+
+          this.swap(j, k);
+
+          j = k;
+          k -= n;
+        }
+      }
+      n = Math.floor(n/2);
+    }
   }
 }
+
 
 var ne1 = new CArray(100);
 
@@ -126,6 +137,12 @@ print();
 print('insertion sort');
 ne1.setData();
 ne1.insertionSort();
+print(ne1.toString());
+
+print();
+print('shell sort');
+ne1.setData();
+ne1.shellSort();
 print(ne1.toString());
 
 
