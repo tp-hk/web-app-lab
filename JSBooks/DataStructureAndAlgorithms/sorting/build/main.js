@@ -55,15 +55,12 @@ function CArray(numElements) {
   }
 
   this.selectionSort = function () {
-    for (let i = 0; i < this.dataStore.length; i++) {
-
+    for (let i = 0; i < this.dataStore.length - 1; i++) {
       let smallestIndex = i;
-      let smallest = this.dataStore[i];
-      for (let j = i; j < this.dataStore.length; j++) {
-        if (this.dataStore[j] < smallest) {
+
+      for (let j = i + 1; j < this.dataStore.length; j++) {
+        if (this.dataStore[smallestIndex] > this.dataStore[j])
           smallestIndex = j;
-          smallest = this.dataStore[j];
-        }
       }
 
       this.swap(smallestIndex, i);
@@ -71,62 +68,71 @@ function CArray(numElements) {
   }
 
   this.insertionSort = function () {
-    let tempArr = [];
-    tempArr.push(this.dataStore[0]);
-
-    let insertIndex;
     for (let i = 1; i < this.dataStore.length; i++) {
-      let toCompareItem = this.dataStore[i];
-
-      for (let j = 0; j < tempArr.length; j++) {
-        insertIndex = j;
-        if (toCompareItem <= tempArr[j]) {
-          tempArr.splice(insertIndex, 0, toCompareItem);
+      for (let j = i; j >= 1; j--) {
+        if (this.dataStore[j] > this.dataStore[j - 1])
           break;
+
+        this.swap(j, j - 1);
+      }
+    }
+  }
+
+  this.shellSort = function () {
+
+    let n = Math.floor(this.dataStore.length / 2);
+
+    while (n > 0) {
+      for (let i = 0; (i + n) < this.dataStore.length; i++) {
+        let j = i + n;
+        let k = i;
+
+        while (k >= 0) {
+          if (this.dataStore[j] >= this.dataStore[k])
+            break;
+
+          this.swap(j, k);
+
+          j = k;
+          k -= n;
         }
       }
 
-      if (insertIndex === tempArr.length - 1)
-        tempArr.push(toCompareItem);
-
+      n = Math.floor(n / 2);
     }
-
-    this.dataStore = tempArr;
-
-    // var temp, inner;
-    // for (var outer = 1; outer <= this.dataStore.length - 1; ++outer) {
-    //   temp = this.dataStore[outer];
-    //   inner = outer;
-    //   while (inner > 0 && (this.dataStore[inner - 1] >= temp)) {
-    //     this.dataStore[inner] = this.dataStore[inner - 1];
-    //     --inner;
-    //   }
-    //   this.dataStore[inner] = temp;
-    // }
   }
 }
 
 var ne1 = new CArray(100);
 
-ne1.setData();
-print(ne1.toString());
-
 print();
+ne1.setData();
 print('bubble sort');
+print('original: ' + ne1.toString())
 ne1.bubbleSort();
-print(ne1.toString());
+print('sorted ' + ne1.toString());
 
 print();
+ne1.setData();
 print('selection sort');
-ne1.setData();
+print('original: ' + ne1.toString())
 ne1.selectionSort();
-print(ne1.toString());
+print('sorted ' + ne1.toString());
 
 print();
-print('insertion sort');
 ne1.setData();
+print('insertion sort');
+print('original: ' + ne1.toString())
 ne1.insertionSort();
 print(ne1.toString());
+
+print();
+ne1.setData();
+print('shell sort');
+print('original: ' + ne1.toString())
+ne1.shellSort();
+print(ne1.toString());
+print('sorted ' + ne1.toString());
 
 
 
