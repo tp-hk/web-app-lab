@@ -35,6 +35,10 @@ function CArray(numElements) {
     }
   }
 
+  this.setArray = function(arr){
+    this.dataStore = arr;
+  }
+
   this.swap = function (index1, index2) {
     // var temp = this.dataStore[index1];
     // this.dataStore[index1] = this.dataStore[index2];
@@ -101,39 +105,124 @@ function CArray(numElements) {
       n = Math.floor(n / 2);
     }
   }
+
+  this.mergeSort = function () {
+    this.dataStore = this._mergeSort(this.dataStore);
+  }
+
+  this._mergeSort = function (arr) {
+    if (arr.length < 2)
+      return arr;
+
+    var middle = parseInt(arr.length / 2);
+    var left = arr.slice(0, middle);
+    var right = arr.slice(middle, arr.length);
+
+    return this.merge(this._mergeSort(left), this._mergeSort(right));
+  }
+
+  this.merge = function (left, right) {
+    var result = [];
+
+    while (left.length && right.length) {
+      if (left[0] <= right[0]) {
+        result.push(left.shift());
+      } else {
+        result.push(right.shift());
+      }
+    }
+
+    while (left.length)
+      result.push(left.shift());
+
+    while (right.length)
+      result.push(right.shift());
+
+    console.log(result);
+    return result;
+  }
+
+  this.quickSort = function () {
+    this._quickSort(this.dataStore);
+  }
+
+  this._quickSort = function (arr) {
+    let left = 0;
+    let right = arr.length - 1;
+    let pivot = left;
+    let newPivot;
+
+    while (left !== right) {
+      if (pivot === left) {
+        // compare pivot to the right side
+        while (arr[pivot] < arr[right])
+          right -= 1;
+
+        newPivot = right;
+        this.swap(pivot, right);
+        pivot = right;
+      } else {
+        while (arr[pivot] > arr[left])
+          left += 1;
+
+        newPivot = left;
+        this.swap(pivot, left);
+        pivot = left;
+      }
+    }
+
+    // left side
+    this._quickSort(arr.slice(0, pivot - 1));
+
+    // right side
+    this._quickSort(arr.slice(pivot + 1, arr.length - 1));
+  }
 }
 
 var ne1 = new CArray(100);
+// var ne1 = [5, 2, 6, 1, 3, 4];
+
+// print();
+// ne1.setData();
+// print('bubble sort');
+// print('original: ' + ne1.toString())
+// ne1.bubbleSort();
+// print('sorted ' + ne1.toString());
+
+// print();
+// ne1.setData();
+// print('selection sort');
+// print('original: ' + ne1.toString())
+// ne1.selectionSort();
+// print('sorted ' + ne1.toString());
+
+// print();
+// ne1.setData();
+// print('insertion sort');
+// print('original: ' + ne1.toString())
+// ne1.insertionSort();
+// print(ne1.toString());
+
+// print();
+// ne1.setData();
+// print('shell sort');
+// print('original: ' + ne1.toString())
+// ne1.shellSort();
+// print('sorted ' + ne1.toString());
+
+// print();
+// ne1.setData();
+// print('merge sort');
+// print('original: ' + ne1.toString())
+// ne1.mergeSort();
+// print('sorted ' + ne1.toString());
 
 print();
-ne1.setData();
-print('bubble sort');
-print('original: ' + ne1.toString())
-ne1.bubbleSort();
+ne1.setArray([5, 2, 6, 1, 3, 4]);
+print('quick sort');
+print('original: ' + ne1.toString());
+ne1.quickSort();
 print('sorted ' + ne1.toString());
-
-print();
-ne1.setData();
-print('selection sort');
-print('original: ' + ne1.toString())
-ne1.selectionSort();
-print('sorted ' + ne1.toString());
-
-print();
-ne1.setData();
-print('insertion sort');
-print('original: ' + ne1.toString())
-ne1.insertionSort();
-print(ne1.toString());
-
-print();
-ne1.setData();
-print('shell sort');
-print('original: ' + ne1.toString())
-ne1.shellSort();
-print(ne1.toString());
-print('sorted ' + ne1.toString());
-
 
 
 
