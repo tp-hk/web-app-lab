@@ -1,25 +1,50 @@
 import React from 'react';
 import ComponentBase from './components/ComponentBase';
 import ReactDom from 'react-dom';
-import SearchBar from './components/search_bar';
 import Searcher from './utilities/Searcher';
+import SearchBar from './components/search_bar';
+import VideoList from './components/video_list';
+import VideoDetail from './components/video_detail';
 
 class App extends ComponentBase {
   constructor(props) {
     super(props);
-    
+    this._bind('onVideoSelect', 'videoSearch');
+
+    this.state = {
+      videos: [],
+      selectedVideo: null
+    };
+
     this.searcher = new Searcher();
-    this.searcher.search('法鼓山').then((response) => {
-      console.log(response);
-      this.state = {
-        videos: response
-      };
+    this.videoSearch('Corgi');
+  }
+
+  onVideoSelect(_video) {
+    this.setState({
+      selectedVideo: _video
+    });
+  }
+
+  videoSearch(_term) {
+    this.searcher.search(_term).then((response) => {
+      if (!response || !response.length === 0)
+      return;
+
+      this.setState({
+        videos: response,
+        selectedVideo: response[0]
+      });
     });
   }
 
   render() {
     return <div>
-      <SearchBar />
+      <SearchBar onSearchTermSubmit={this.videoSearch} />
+      <VideoDetail video={this.state.selectedVideo} />
+      <VideoList
+        videos={this.state.videos}
+        onVideoSelect={this.onVideoSelect} />
     </div>;
   }
 
@@ -33,3 +58,5 @@ ReactDom.render(<App />, document.getElementById('container'));
 
 //// ReactDom.render(<App />); by itself doesn't know where to render. Therefore, add a second arg to include the Target container
 
+//// step 1: define selectedVideo variable here and pass to VideoDetail through <VideoDetail video={this.state.selectedVideo} />
+// step 2: pass callback `onVideoSelect={this.onVideoSelect}` to VideoList

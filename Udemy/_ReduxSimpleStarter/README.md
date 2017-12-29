@@ -16,18 +16,24 @@
   - cleaner way to get value from user (through state)
   - example: <br/> <img width="920" alt="screen shot 2017-12-28 at 2 58 49 pm" src="https://user-images.githubusercontent.com/10753915/34425351-c59890a2-ebdf-11e7-9313-e2426545174e.png">
 - Downwards dataflow: only the most parent component (i.e. App, or index.js) should be responsible for fetching data 
-
-
-## JSX
-- JSX gets transpiled into plain JS. To experiment the change, use https://babeljs.io/repl
-
+- When react needs to render objects of the same type (e.g. list item), it assumes that the objects come in as a list. Having a key helps React determine which object to re-render when item is updated
+- passing callback from parent to child through `this.props.parentFunction` is ok, but it's uncommon to go more than two levels
 
 ## JS
 - `const`: variable that never changes
 - `import React, { Component } from 'react'` - { Component } means pulling off the React.Component property from React
 - Class `constructor`: super(props) calls the parent class's ctor
 - for `this.setState({ videos: videos});`. Since key === value, can condense it to `this.setState({ videos });`
+- ES6 string concat: "`https://www.youtube.com/embed/${videoId}`"
 
+## JSX
+- JSX gets transpiled into plain JS. To experiment the change, use https://babeljs.io/repl
+- The following are the same
+  - `<SearchBar onSearchTermSubmit={this.videoSearch} />`
+  - `<SearchBar onSearchTermSubmit={(returnValue) => { this.videoSearch(returnValue); }} />`
+
+## CSS
+- best practice: give the root-level element of a component the className using the name of the component e.g. search-bar.js can use `<div className='search-bar'>`
 
 ## To get started
 - npm install

@@ -7,10 +7,14 @@ class Searcher {
     this.API_KEY = 'AIzaSyDU_FM_MUW1Hy_4G5E2tWcfOHzjshSfPjQ';
   }
 
-  search(_term) {
-
+  search(_term, _limit) {
+    const query = {
+      key: this.API_KEY,
+      term: _term,
+      limit: _limit > 0 ? _limit : 20
+    }
     let promise = new Promise((resolve) => {
-      YTSearch({ key: this.API_KEY, term: _term }, (data) => {
+      YTSearch(query, (data) => {
         resolve(data);
       });
     });
@@ -18,6 +22,6 @@ class Searcher {
   }
 }
 
+// TODO get to the bottom of export
 // let instance = new Searcher();
 export default Searcher;
-// module.export = instance;
