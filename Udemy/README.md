@@ -21,7 +21,7 @@
 - Component-level state: state that only affects one instance. In redux, there can be application-level state
 
 ## Redux
-- Redux is the state/data container in the application (e.g. number counter, list of books, currently selected book); React represents the view; Containers are used to connect Redux and React
+- Redux contains and manages the app. state (e.g. number counter, list of books, currently selected book); React represents the view; React-redux is used to connect Redux and React
 - Redux uses one object (app. state) to hold all states
 
 ### Reducer (state management)
@@ -39,6 +39,10 @@
     - Before: <br/> <img width="651" alt="screen shot 2018-01-02 at 8 57 06 pm" src="https://user-images.githubusercontent.com/10753915/34509730-2a9e9782-f002-11e7-9d45-272de003fa43.png">
     - After: <br/> <img width="836" alt="screen shot 2018-01-03 at 9 29 31 am" src="https://user-images.githubusercontent.com/10753915/34531847-a41e6ae0-f068-11e7-95c5-3e0319a5d987.png">
 
+### Actions
+- actions and action creators are for changing states
+- actionCreator: creates an action (with a type and some data (as an object)) 
+- user triggers an action → actionCreator creates an action → action goes to all reducers → reducers decide if the action will be handled or not → if reducer doesn't ignore the action, it will return a new state → when all reducers processed all actions, the new state will be pumped back to all containers → all containers will re-render
 
 ## JS
 - `const`: variable that never changes
@@ -66,8 +70,3 @@
 - npm install --save lodash
 - npm start
 - access the app from http://localhost:8080/
-
-
-- analyze yourself: list all work experience: what do you like about work experience. 30-40 questions
-- what problems with self management
-- what makes you happy
