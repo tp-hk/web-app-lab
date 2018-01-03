@@ -33,6 +33,8 @@ function mapStateToProps(state) {
   // ** added for changing into a container
   // mapping states of the app including books: [] or activeBook: {} into props
   // whatever is returned will show up as this.props inside of BookList
+
+  // what to return? check reducers/index.js
   return {
     storeName: 'ReadOn',
     books: state.books

@@ -26,7 +26,14 @@
 
 ### Reducer (state management)
 - A function which returns a piece of the app's state (object) using the key of the object. Number of reducers == number of state objects
-- 2 steps to create: First create reducer, then wire it up with the app (in reducer/index.js). The wiring is done by the react-redux library
+- Two steps to create: First create reducer, then wire it up with the app (in reducer/index.js). 
+- All reducers get 2 arguments: `state`, `action`. `state` is only the state this reducer is responsible for, not the app state; When an action is dispatched, the previous state of this reducer will be updated based on the logic
+- Notes when creating reducers:
+  - In method signature, use `state = null`, reason: when the app is booted up, state is undefined and will cause an error since reducer must return an object. Therefore, set state = null as the default
+  - use switch to select which action to handle, and always have a base case to return the current state when the reducer doesn't need to care about the action
+  - do not mutate the state object i.e. don't do: `state.title = 'newTitle'; return state`, instead always return a fresh object
+  - other things not to do: https://redux.js.org/docs/basics/Reducers.html#handling-actions
+- At startup, redux sends some boot-up actions to reducers, all reducers will return a state (the base case), which is default to null. Therefore, on the `render()` method of container it's best to add a default case when state === null on start up, see BookStore.book-detail.js as an example
 
 ### Container (connect states with views)
 - One of the components will be "prompted" to a container/smart component: a component with connection to the Redux state (bridge between view and states)
@@ -44,7 +51,7 @@
 - actionCreator: creates an action (with a type and some data (as an object)) 
 - user triggers an action → actionCreator creates an action → action goes to all reducers → reducers decide if the action will be handled or not → if reducer doesn't ignore the action, it will return a new state → when all reducers processed all actions, the new state will be pumped back to all containers → all containers will re-render
 
-## JS
+## JS/WS6
 - `const`: variable that never changes
 - `import React, { Component } from 'react'` - { Component } means pulling off the React.Component property from React
 - Class `constructor`: super(props) calls the parent class's ctor
@@ -54,6 +61,7 @@
   - before <br/> <img width="477" alt="screen shot 2017-12-29 at 1 18 00 am" src="https://user-images.githubusercontent.com/10753915/34433781-67807e88-ec36-11e7-9d5e-96b4666ee1e3.png">
   - after <br/> <img width="662" alt="screen shot 2017-12-29 at 1 18 22 am" src="https://user-images.githubusercontent.com/10753915/34433776-58f24e28-ec36-11e7-9770-c1735136c8f9.png">
 - `module.exports = App` is the commonJS way of exporting; `export default App` is the ES6 way of exporting
+- `function foo(arg1 = 123){ ... }` ==> if arg1 is undefined, set the default value to 123
 
 ## JSX
 - JSX gets transpiled into plain JS. To experiment the change, use https://babeljs.io/repl
