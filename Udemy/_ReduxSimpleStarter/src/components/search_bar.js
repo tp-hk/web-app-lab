@@ -5,7 +5,7 @@ class SearchBar extends ComponentBase {
 
   constructor(props) {
     super(props);
-    this._bind('onSubmitSearchTerm');
+    this._bind('onSubmitSearchTerm', 'onSearchTermChange');
 
     this.state = {
       term: ''
@@ -14,6 +14,14 @@ class SearchBar extends ComponentBase {
 
   onSubmitSearchTerm(event) {
     event.preventDefault();
+    this.props.onSearchTermSubmit(this.state.term);
+  }
+
+  onSearchTermChange(event) {
+    event.preventDefault();
+    this.setState({
+      term: event.target.value
+    });
     this.props.onSearchTermSubmit(this.state.term);
   }
 
@@ -27,9 +35,9 @@ class SearchBar extends ComponentBase {
       <form className='search-bar' onSubmit={this.onSubmitSearchTerm}>
         <input
           value={this.state.term}
-          onChange={(event) => { this.setState({ term: event.target.value }); }}
+          onChange={(event) => { this.onSearchTermChange(event); }}
         />
-        <input type='submit' value='Submit' />
+        {/* <input type='submit' value='Submit' /> */}
       </form>
     </div>
   }

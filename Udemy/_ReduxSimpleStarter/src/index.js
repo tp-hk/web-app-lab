@@ -1,6 +1,7 @@
 import React from 'react';
 import ComponentBase from './components/ComponentBase';
 import ReactDom from 'react-dom';
+import _ from 'lodash'; // for throttling 
 import Searcher from './utilities/Searcher';
 import SearchBar from './components/search_bar';
 import VideoList from './components/video_list';
@@ -27,9 +28,10 @@ class App extends ComponentBase {
   }
 
   videoSearch(_term) {
+    // gets call immediately when onSearchSubmit is called
     this.searcher.search(_term).then((response) => {
       if (!response || !response.length === 0)
-      return;
+        return;
 
       this.setState({
         videos: response,
@@ -39,8 +41,11 @@ class App extends ComponentBase {
   }
 
   render() {
+    // debounce returns a new function which can be called only every 300ms
+    const videoSearch = _.debounce((term) => { this.videoSearch(term); }, 300);
+
     return <div>
-      <SearchBar onSearchTermSubmit={this.videoSearch} />
+      <SearchBar onSearchTermSubmit={videoSearch} />
       <VideoDetail video={this.state.selectedVideo} />
       <VideoList
         videos={this.state.videos}

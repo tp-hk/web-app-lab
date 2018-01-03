@@ -18,6 +18,11 @@
 - Downwards dataflow: only the most parent component (i.e. App, or index.js) should be responsible for fetching data 
 - When react needs to render objects of the same type (e.g. list item), it assumes that the objects come in as a list. Having a key helps React determine which object to re-render when item is updated
 - passing callback from parent to child through `this.props.parentFunction` is ok, but it's uncommon to go more than two levels
+- Component-level state: state that only affects one instance. In redux, there can be application-level state
+
+## Redux
+- Redux is the state/data container in the application (e.g. number counter, list of books, currently selected book); React represents the view
+- Redux uses one object (app. state) to contain all states
 
 ## JS
 - `const`: variable that never changes
@@ -25,6 +30,10 @@
 - Class `constructor`: super(props) calls the parent class's ctor
 - for `this.setState({ videos: videos});`. Since key === value, can condense it to `this.setState({ videos });`
 - ES6 string concat: "`https://www.youtube.com/embed/${videoId}`"
+- Can use lodash to delay the time a function is fired. e.g. 
+  - before <br/> <img width="477" alt="screen shot 2017-12-29 at 1 18 00 am" src="https://user-images.githubusercontent.com/10753915/34433781-67807e88-ec36-11e7-9d5e-96b4666ee1e3.png">
+  - after <br/> <img width="662" alt="screen shot 2017-12-29 at 1 18 22 am" src="https://user-images.githubusercontent.com/10753915/34433776-58f24e28-ec36-11e7-9770-c1735136c8f9.png">
+- `module.exports = App` is the commonJS way of exporting; `export default App` is the ES6 way of exporting
 
 ## JSX
 - JSX gets transpiled into plain JS. To experiment the change, use https://babeljs.io/repl
@@ -38,5 +47,11 @@
 ## To get started
 - npm install
 - npm install --save youtube-api-search
+- npm install --save lodash
 - npm start
 - access the app from http://localhost:8080/
+
+
+- analyze yourself: list all work experience: what do you like about work experience. 30-40 questions
+- what problems with self management
+- what makes you happy
