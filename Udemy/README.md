@@ -21,8 +21,24 @@
 - Component-level state: state that only affects one instance. In redux, there can be application-level state
 
 ## Redux
-- Redux is the state/data container in the application (e.g. number counter, list of books, currently selected book); React represents the view
-- Redux uses one object (app. state) to contain all states
+- Redux is the state/data container in the application (e.g. number counter, list of books, currently selected book); React represents the view; Containers are used to connect Redux and React
+- Redux uses one object (app. state) to hold all states
+
+### Reducer (state management)
+- A function which returns a piece of the app's state (object) using the key of the object. Number of reducers == number of state objects
+- 2 steps to create: First create reducer, then wire it up with the app (in reducer/index.js). The wiring is done by the react-redux library
+
+### Container (connect states with views)
+- One of the components will be "prompted" to a container/smart component: a component with connection to the Redux state (bridge between view and states)
+- which component to get promoted to a container? Usually the most-parent which cares about a piece of state (e.g. BookList)
+- In reality, app.js can be the only container in the app and have access to all states
+- container can be put into a "containers" folder
+- Whenever App state changes, containers will re-render right away
+- Whenever App state changes, the mapStateToProps() will produce a new this.props
+- changing from a component to a container: 
+    - Before: <br/> <img width="651" alt="screen shot 2018-01-02 at 8 57 06 pm" src="https://user-images.githubusercontent.com/10753915/34509730-2a9e9782-f002-11e7-9d45-272de003fa43.png">
+    - After: <br/> <img width="836" alt="screen shot 2018-01-03 at 9 29 31 am" src="https://user-images.githubusercontent.com/10753915/34531847-a41e6ae0-f068-11e7-95c5-3e0319a5d987.png">
+
 
 ## JS
 - `const`: variable that never changes
