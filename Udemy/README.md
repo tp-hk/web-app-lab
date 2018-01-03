@@ -21,7 +21,7 @@
 - Component-level state: state that only affects one instance. In redux, there can be application-level state
 
 ## Redux
-- Redux contains and manages the app. state (e.g. number counter, list of books, currently selected book); React represents the view; React-redux is used to connect Redux and React
+- Redux manages the app. state (e.g. number counter, list of books, currently selected book); React represents the view; React-redux is used to connect Redux and React
 - Redux uses one object (app. state) to hold all states
 
 ### Reducer (state management)
@@ -37,7 +37,9 @@
 
 ### Container (connect states with views)
 - One of the components will be "prompted" to a container/smart component: a component with connection to the Redux state (bridge between view and states)
-- which component to get promoted to a container? Usually the most-parent which cares about a piece of state (e.g. BookList)
+- which component to get promoted to a container? 
+  - Usually the most-parent which cares about a piece of state (e.g. BookList)
+  - Or one that performs an action that changes the state of the app (e.g. search for stuff) i.e. need to talk to Redux
 - In reality, app.js can be the only container in the app and have access to all states
 - container can be put into a "containers" folder
 - Whenever App state changes, containers will re-render right away
@@ -51,6 +53,9 @@
 - actionCreator: creates an action (with a type and some data (as an object)) 
 - user triggers an action → actionCreator creates an action → action goes to all reducers → reducers decide if the action will be handled or not → if reducer doesn't ignore the action, it will return a new state → when all reducers processed all actions, the new state will be pumped back to all containers → all containers will re-render
 
+### Doing AJAX in Redux
+
+
 ## JS/WS6
 - `const`: variable that never changes
 - `import React, { Component } from 'react'` - { Component } means pulling off the React.Component property from React
@@ -62,6 +67,7 @@
   - after <br/> <img width="662" alt="screen shot 2017-12-29 at 1 18 22 am" src="https://user-images.githubusercontent.com/10753915/34433776-58f24e28-ec36-11e7-9770-c1735136c8f9.png">
 - `module.exports = App` is the commonJS way of exporting; `export default App` is the ES6 way of exporting
 - `function foo(arg1 = 123){ ... }` ==> if arg1 is undefined, set the default value to 123
+- in component ctor: `this.func = this.func.bind(this);` means override `this.func` with a new `this.func` which is bound to `this`.
 
 ## JSX
 - JSX gets transpiled into plain JS. To experiment the change, use https://babeljs.io/repl
