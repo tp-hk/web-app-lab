@@ -5,8 +5,8 @@ export const selectImageAction = (image) => ({
   image
 });
 
-export const selectedVideoAction = (video) => ({
-  type: type.SELECTED_VIDEO,
+export const selectVideoAction = (video) => ({
+  type: types.SELECTED_VIDEO,
   video
 });
 
