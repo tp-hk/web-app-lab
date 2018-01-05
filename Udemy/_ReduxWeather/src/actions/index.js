@@ -1,4 +1,18 @@
-const API_KEY = 'b6907d289e10d714a6e88b30761fae22';
+import axios from 'axios';
+import * as ACTIONS from '../constants/actions_constants';
+
+const API_KEY = '84d5f819ca1bf0cca138ece5caf58f1c';
+const ROOT_URL = `http://api.openweathermap.org/data/2.5/forecast?appid=${API_KEY}`;
+
+export function fetchWeather(city) {
+  const url = `${ROOT_URL}&q=${city}`;
+  
+  console.log('gonna search weather for ' + url);
+
+  return {
+    type: 'FETCH_WEATHER',
+    payload: axios.get(url)
+  };
 
 
-// http://samples.openweathermap.org/data/2.5/forecast?q=London,us&appid=b6907d289e10d714a6e88b30761fae22
+}

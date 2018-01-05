@@ -25,12 +25,13 @@
 - Redux uses one object (app. state) to hold all states
 
 ### Reducer (state management)
-- A function which returns a piece of the app's state (object) using the key of the object. Number of reducers == number of state objects
+- A function which returns a piece of the app's state (object) using the key of the object. Number of reducers == number of app states
 - Two steps to create: First create reducer, then wire it up with the app (in reducer/index.js). 
 - All reducers get 2 arguments: `state`, `action`. `state` is only the state this reducer is responsible for, not the app state; When an action is dispatched, the previous state of this reducer will be updated based on the logic
 - Notes when creating reducers:
-  - In method signature, use `state = null`, reason: when the app is booted up, state is undefined and will cause an error since reducer must return an object. Therefore, set state = null as the default
-  - use switch to select which action to handle, and always have a base case to return the current state when the reducer doesn't need to care about the action
+  - MUST: return an object representing a state
+  - MUST: in method signature, use `state = null`, reason: when the app is booted up, state is undefined and will cause an error since reducer must return an object. Therefore, set state = null as the default
+  - MUST: use switch to select which action to handle, and must have a base case to return the current state when the reducer doesn't need to care about the action
   - do not mutate the state object i.e. don't do: `state.title = 'newTitle'; return state`, instead always return a fresh object
   - other things not to do: https://redux.js.org/docs/basics/Reducers.html#handling-actions
 - At startup, redux sends some boot-up actions to reducers, all reducers will return a state (the base case), which is default to null. Therefore, on the `render()` method of container it's best to add a default case when state === null on start up, see BookStore.book-detail.js as an example
@@ -49,12 +50,15 @@
     - After: <br/> <img width="836" alt="screen shot 2018-01-03 at 9 29 31 am" src="https://user-images.githubusercontent.com/10753915/34531847-a41e6ae0-f068-11e7-95c5-3e0319a5d987.png">
 
 ### Actions
-- actions and action creators are for changing states
-- actionCreator: creates an action (with a type and some data (as an object)) 
-- user triggers an action → actionCreator creates an action → action goes to all reducers → reducers decide if the action will be handled or not → if reducer doesn't ignore the action, it will return a new state → when all reducers processed all actions, the new state will be pumped back to all containers → all containers will re-render
+- MUST: actionCreator Must return an action object (which must have a type and some data) 
+- Logic flow: user triggers an action → actionCreator creates an action → action goes to all reducers → reducers decide if the action will be handled or not → if reducer doesn't ignore the action, it will return a new state → when all reducers processed all actions, the new state will be pumped back to all containers → all containers will re-render
+
+### Middleware
+- gatekeeper. Receives an action from ActionCreator. It can then decide to let it pass to reducers, manipulate it, log it, or stop it
+- For ReduxPromise, if an action returns a promise as the payload, the middleware stops the action, get the response from the promise, then creates a new action of the same type, and dispatch to the reducers. 
 
 ### Doing AJAX in Redux
-
+- can use redux-promise package
 
 ## JS/WS6
 - `const`: variable that never changes

@@ -1,11 +1,8 @@
 import React from 'react';
 import ComponentBase from '../components/ComponentBase';
-import { selectBook } from '../actions/index';  // ** added for wiring with actionCreator and reducers 
+import { connect } from 'react-redux';  // ** added for changing into a container. connecting redux with react
 import { bindActionCreators } from 'redux'; // ** added for wiring with actionCreator and reducers 
-
-// ** added for changing into a container
-// connecting redux with react
-import { connect } from 'react-redux';
+import { selectBook } from '../actions/index';  // ** added for wiring with actionCreator and reducers 
 
 class BookList extends ComponentBase {
 

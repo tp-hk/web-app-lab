@@ -1,12 +1,15 @@
 import React from 'react';
 import ComponentBase from '../components/ComponentBase';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import { fetchWeather } from '../actions/index';
 
 class SearchBar extends ComponentBase {
   constructor(props) {
     super(props);
 
-    this._bind('handleSearchTermChange');
+    this._bind('handleSearchTermChange', 'handleSubmit');
 
     this.state = {
       term: ''
@@ -23,6 +26,15 @@ class SearchBar extends ComponentBase {
 
   handleSubmit(evt) {
     evt.preventDefault();
+
+    this.props.fetchWeather(this.state.term)
+      .then((response) => {
+        console.log(response, 'weatherInfos');
+      })
+
+    this.setState({
+      term: ''
+    });
   }
 
   render() {
@@ -42,4 +54,14 @@ class SearchBar extends ComponentBase {
   }
 }
 
-export default SearchBar;
+function mapStateToProps(state) {
+  return {
+    weatherInfo: state
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchWeather: fetchWeather }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
