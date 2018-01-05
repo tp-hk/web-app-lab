@@ -19,8 +19,7 @@ class MediaGalleryPage extends ComponentBase {
     // flickrImages('dog').then(images => console.log(images, 'Images'));
     // shutterStockVideos('cat').then(videos => console.log(videos, 'Videos'));
 
-    // this.props.dispatch(searchMediaAction('corgi'));
-    this.props.dispatch(searchMediaAction('corgi'));
+    this.props.dispatch(searchMediaAction('Hong Kong'));
   }
 
   // Dispatches *selectImageAction* when any image is clicked
