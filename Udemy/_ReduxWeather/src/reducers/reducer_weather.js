@@ -1,7 +1,7 @@
 import * as ACTIONS from '../constants/actions_constants';
 
 export default function (state = [], action) {
-  console.log('action received ' + action.type);
+  // console.log('action received ' + action.type);
   switch (action.type) {
     case ACTIONS.FETCH_WEATHER:
       // return state.push(action.payload.data)  // DON'T DO THIS

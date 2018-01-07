@@ -27,10 +27,11 @@ class SearchBar extends ComponentBase {
   handleSubmit(evt) {
     evt.preventDefault();
 
-    this.props.fetchWeather(this.state.term)
-      .then((response) => {
-        console.log(response, 'weatherInfos');
-      })
+    this.props.fetchWeather(this.state.term);
+
+      // .then((response) => {
+      //   console.log(response, 'weatherInfos');
+      // })
 
     this.setState({
       term: ''
@@ -55,8 +56,9 @@ class SearchBar extends ComponentBase {
 }
 
 function mapStateToProps(state) {
+  console.log('mapStateToProps ' + state);
   return {
-    weatherInfo: state
+    weatherInfo: state.weather
   };
 }
 

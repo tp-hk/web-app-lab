@@ -7,12 +7,8 @@ const ROOT_URL = `http://api.openweathermap.org/data/2.5/forecast?appid=${API_KE
 export function fetchWeather(city) {
   const url = `${ROOT_URL}&q=${city}`;
   
-  console.log('gonna search weather for ' + url);
-
   return {
     type: 'FETCH_WEATHER',
     payload: axios.get(url)
   };
-
-
 }
