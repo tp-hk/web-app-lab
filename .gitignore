@@ -3,3 +3,5 @@ EmberLab/emberCli/borrowers/app/.idea/
 JSBooks/DataStructureAndAlgorithms/sorting/node_modules
 main.bundle.js
 React/media-library/public
+.gitignore
+React/boilerplate
