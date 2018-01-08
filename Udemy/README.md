@@ -19,6 +19,7 @@
 - When react needs to render objects of the same type (e.g. list item), it assumes that the objects come in as a list. Having a key helps React determine which object to re-render when item is updated
 - passing callback from parent to child through `this.props.parentFunction` is ok, but it's uncommon to go more than two levels
 - Component-level state: state that only affects one instance. In redux, there can be application-level state
+- The `ref` property in react allows a component to connect to an HTML element. E.g. when calling `this.refs.map`, the component with the `ref='map'` property can be accessed
 
 ## Redux
 - Redux manages the app. state (e.g. number counter, list of books, currently selected book); React represents the view; React-redux is used to connect Redux and React
@@ -60,7 +61,13 @@
 ### Doing AJAX in Redux
 - can use redux-promise package
 
-## JS/WS6
+## JSX
+- JSX gets transpiled into plain JS. To experiment the change, use https://babeljs.io/repl
+- The following are the same
+  - `<SearchBar onSearchTermSubmit={this.videoSearch} />`
+  - `<SearchBar onSearchTermSubmit={(returnValue) => { this.videoSearch(returnValue); }} />`
+
+## JS/ES6
 - `const`: variable that never changes
 - `import React, { Component } from 'react'` - { Component } means pulling off the React.Component property from React
 - Class `constructor`: super(props) calls the parent class's ctor
@@ -72,12 +79,11 @@
 - `module.exports = App` is the commonJS way of exporting; `export default App` is the ES6 way of exporting
 - `function foo(arg1 = 123){ ... }` ==> if arg1 is undefined, set the default value to 123
 - in component ctor: `this.func = this.func.bind(this);` means override `this.func` with a new `this.func` which is bound to `this`.
-
-## JSX
-- JSX gets transpiled into plain JS. To experiment the change, use https://babeljs.io/repl
-- The following are the same
-  - `<SearchBar onSearchTermSubmit={this.videoSearch} />`
-  - `<SearchBar onSearchTermSubmit={(returnValue) => { this.videoSearch(returnValue); }} />`
+- lines 1 + 2 below can be simplified into line 3:
+  - `const lat = city.coord`
+  - `const lng = city.coord`
+  - `const {lat, lng} = city.coord`
+- [obj, ...arr2] ==> create a new array with obj and items from arr2
 
 ## CSS
 - best practice: give the root-level element of a component the className using the name of the component e.g. search-bar.js can use `<div className='search-bar'>`

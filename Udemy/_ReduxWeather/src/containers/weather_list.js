@@ -3,6 +3,7 @@ import ComponentBase from '../components/ComponentBase';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Chart from '../components/Chart';
+import GoogleMap from '../components/google_map';
 
 class WeatherList extends ComponentBase {
   constructor(props) {
@@ -18,15 +19,17 @@ class WeatherList extends ComponentBase {
 
     return (
       <tr key={cityData.city.name}>
-        <td>{cityData.city.name}</td>
         <td>
-          <Chart data={temps} units='K'/>
+          <GoogleMap cityName={cityData.city.name} coord={cityData.city.coord} />
         </td>
         <td>
-          <Chart data={humidity} units='hPa'/>
+          <Chart data={temps} units='K' />
         </td>
         <td>
-          <Chart data={pressure} units='%'/>
+          <Chart data={humidity} units='hPa' />
+        </td>
+        <td>
+          <Chart data={pressure} units='%' />
         </td>
       </tr>);
   }
