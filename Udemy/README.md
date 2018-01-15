@@ -51,8 +51,12 @@
     - After: <br/> <img width="836" alt="screen shot 2018-01-03 at 9 29 31 am" src="https://user-images.githubusercontent.com/10753915/34531847-a41e6ae0-f068-11e7-95c5-3e0319a5d987.png">
 
 ### Actions
-- MUST: actionCreator Must return an action object (which must have a type and some data) 
+- MUST: actionCreator Must return an action object (which must have a type and optionally some data) 
 - Logic flow: user triggers an action → actionCreator creates an action → action goes to all reducers → reducers decide if the action will be handled or not → if reducer doesn't ignore the action, it will return a new state → when all reducers processed all actions, the new state will be pumped back to all containers → all containers will re-render
+- The `mapDispatchToPros()` method can be simplified as follow: 
+  - Before (used when additional computation is needed in the method): <img width="533" alt="screen shot 2018-01-15 at 9 38 46 am" src="https://user-images.githubusercontent.com/10753915/34955416-1fba3a98-f9d9-11e7-96c5-8afb30738902.png"> 
+  - After: <img width="579" alt="screen shot 2018-01-15 at 9 39 28 am" src="https://user-images.githubusercontent.com/10753915/34955427-2665ee6e-f9d9-11e7-9917-7c7023b10e01.png">
+  - After (used when additional computation is needed in the method): 
 
 ### Middleware
 - gatekeeper. Receives an action from ActionCreator. It can then decide to let it pass to reducers, manipulate it, log it, or stop it
@@ -60,6 +64,16 @@
 
 ### Doing AJAX in Redux
 - can use redux-promise package
+
+### Router
+- `react-router-dom` comes with History component
+- minimum amount of code to test react router: 
+  - before: <img width="581" alt="screen shot 2018-01-07 at 4 49 27 pm" src="https://user-images.githubusercontent.com/10753915/34656181-df7f680e-f3ca-11e7-9751-9789dd51dfab.png">
+  - after: <img width="607" alt="screen shot 2018-01-07 at 4 49 04 pm" src="https://user-images.githubusercontent.com/10753915/34656184-e583e39c-f3ca-11e7-9969-67b3abdfddfa.png">
+- with router, App component can be cleaned up as there's no more central location. Also dummy components can be setup to test routing code: 
+  - Before: <img width="581" alt="screen shot 2018-01-07 at 4 49 27 pm" src="https://user-images.githubusercontent.com/10753915/34955464-5bee7cf4-f9d9-11e7-94ca-932d76496846.png">
+  - After: <img width="607" alt="screen shot 2018-01-07 at 4 49 04 pm" src="https://user-images.githubusercontent.com/10753915/34955487-772b0bcc-f9d9-11e7-95e6-77891ac9582b.png">
+
 
 ## JSX
 - JSX gets transpiled into plain JS. To experiment the change, use https://babeljs.io/repl
@@ -84,6 +98,7 @@
   - `const lng = city.coord`
   - `const {lat, lng} = city.coord`
 - [obj, ...arr2] ==> create a new array with obj and items from arr2
+- import statement: `import {foo} from '../actions/index';` can be simplified as `import {foo} from '../action';`
 
 ## CSS
 - best practice: give the root-level element of a component the className using the name of the component e.g. search-bar.js can use `<div className='search-bar'>`
