@@ -24,6 +24,14 @@
 ## Redux
 - Redux manages the app. state (e.g. number counter, list of books, currently selected book); React represents the view; React-redux is used to connect Redux and React
 - Redux uses one object (app. state) to hold all states
+- `redux-form` handles redux-related forms. It validates form elements and submit forms
+- how `redux-form` works:  <br/> <img width="358" alt="screen shot 2018-01-15 at 10 42 38 am" src="https://user-images.githubusercontent.com/10753915/34957103-019c80f4-f9e1-11e7-9bc2-ffeef5118252.png">
+  1. Setup redux form in index reducer (see [example](https://github.com/StephenGrider/ReduxCasts/blob/master/blog/src/reducers/index.js)). `form` keyword must be used for `formReducer`;
+  2. In form container component, identify pieces of form state (i.e. what input controls)
+  3. Make one field component per piece of state in the component
+
+## Redux-form
+
 
 ### Reducer (state management)
 - A function which returns a piece of the app's state (object) using the key of the object. Number of reducers == number of app states
@@ -38,6 +46,15 @@
 - At startup, redux sends some boot-up actions to reducers, all reducers will return a state (the base case), which is default to null. Therefore, on the `render()` method of container it's best to add a default case when state === null on start up, see BookStore.book-detail.js as an example
 
 ### Container (connect states with views)
+- Steps to create new container component and wire with route:
+  1. Scaffold new component
+  2. Add route config to index.js
+  3. Add navigation between new component and other components
+  4. Create UI + internal logic for the new component
+  5. If needed, wire with action creator and application state. To do that: 
+    - First create the action 
+    - Then create the reducer that works with the action
+    - Then wire up component with actions and the state 
 - One of the components will be "prompted" to a container/smart component: a component with connection to the Redux state (bridge between view and states)
 - which component to get promoted to a container? 
   - Usually the most-parent which cares about a piece of state (e.g. BookList)
@@ -49,6 +66,7 @@
 - changing from a component to a container: 
     - Before: <br/> <img width="651" alt="screen shot 2018-01-02 at 8 57 06 pm" src="https://user-images.githubusercontent.com/10753915/34509730-2a9e9782-f002-11e7-9d45-272de003fa43.png">
     - After: <br/> <img width="836" alt="screen shot 2018-01-03 at 9 29 31 am" src="https://user-images.githubusercontent.com/10753915/34531847-a41e6ae0-f068-11e7-95c5-3e0319a5d987.png">
+- `connect(mapStateToProps, mapDispatchToProps)(MyClass)`: `connect` adds some additional props to component
 
 ### Actions
 - MUST: actionCreator Must return an action object (which must have a type and optionally some data) 
@@ -73,6 +91,9 @@
 - with router, App component can be cleaned up as there's no more central location. Also dummy components can be setup to test routing code: 
   - Before: <img width="581" alt="screen shot 2018-01-07 at 4 49 27 pm" src="https://user-images.githubusercontent.com/10753915/34955464-5bee7cf4-f9d9-11e7-94ca-932d76496846.png">
   - After: <img width="607" alt="screen shot 2018-01-07 at 4 49 04 pm" src="https://user-images.githubusercontent.com/10753915/34955487-772b0bcc-f9d9-11e7-95e6-77891ac9582b.png">
+- The following will cause all non-`/` components to generate under `/` component <br> <img width="476" alt="screen shot 2018-01-15 at 10 16 00 am" src="https://user-images.githubusercontent.com/10753915/34956232-19ec2604-f9dd-11e7-98c1-9c32ef184261.png"> <br/> Reason: Whenever router sees `/` on the URL, it always renders the component that matches `/`. Since `/` and `/posts/new` both contain `/`, the `/` component will be rendered. To fix, do one of the following:
+  1. Change `<Route path='/' component={foo}/>` to `<Route path='/' exact component={foo}/>` 
+  2. import `Switch` from `react-router-dom`, then change code to the following. Make sure the most generic route is placed at the END: <img width="468" alt="screen shot 2018-01-15 at 10 22 05 am" src="https://user-images.githubusercontent.com/10753915/34956463-0964edf6-f9de-11e7-9bec-aaee189369d2.png">
 
 
 ## JSX
@@ -99,9 +120,13 @@
   - `const {lat, lng} = city.coord`
 - [obj, ...arr2] ==> create a new array with obj and items from arr2
 - import statement: `import {foo} from '../actions/index';` can be simplified as `import {foo} from '../action';`
+- `const {meta} = field;` --> meta prop was pulled off from field
+- `const { meta: { touched, error } } = field;` -->  touched and error (nested) properties are pulled off from field.meta
+    
 
 ## CSS
-- best practice: give the root-level element of a component the className using the name of the component e.g. search-bar.js can use `<div className='search-bar'>`
+- Best practice: give the root-level element of a component the className using the name of the component e.g. search-bar.js can use `<div className='search-bar'>`
+- Link which looks like a button `<Link className='btn btn-primary' to='/posts/new'>Ok</Link>`
 
 ## To get started
 - npm install
