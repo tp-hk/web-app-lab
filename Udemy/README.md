@@ -52,7 +52,7 @@
   3. Add navigation between new component and other components
   4. Create UI + internal logic for the new component
   5. If needed, wire with action creator and application state. To do that: 
-    - First create the action 
+    - First add the action creator
     - Then create the reducer that works with the action
     - Then wire up component with actions and the state 
 - One of the components will be "prompted" to a container/smart component: a component with connection to the Redux state (bridge between view and states)
@@ -70,6 +70,7 @@
 
 ### Actions
 - MUST: actionCreator Must return an action object (which must have a type and optionally some data) 
+- whenever saving data or making API requests, always call action creator
 - Logic flow: user triggers an action → actionCreator creates an action → action goes to all reducers → reducers decide if the action will be handled or not → if reducer doesn't ignore the action, it will return a new state → when all reducers processed all actions, the new state will be pumped back to all containers → all containers will re-render
 - The `mapDispatchToPros()` method can be simplified as follow: 
   - Before (used when additional computation is needed in the method): <img width="533" alt="screen shot 2018-01-15 at 9 38 46 am" src="https://user-images.githubusercontent.com/10753915/34955416-1fba3a98-f9d9-11e7-96c5-8afb30738902.png"> 
@@ -91,10 +92,11 @@
 - with router, App component can be cleaned up as there's no more central location. Also dummy components can be setup to test routing code: 
   - Before: <img width="581" alt="screen shot 2018-01-07 at 4 49 27 pm" src="https://user-images.githubusercontent.com/10753915/34955464-5bee7cf4-f9d9-11e7-94ca-932d76496846.png">
   - After: <img width="607" alt="screen shot 2018-01-07 at 4 49 04 pm" src="https://user-images.githubusercontent.com/10753915/34955487-772b0bcc-f9d9-11e7-95e6-77891ac9582b.png">
+- When doing `<Route ... component={MyComp}></Route>`, react-router sends a bunch of helpers and objects for helping with navigation e.g. `this.props.history`
 - The following will cause all non-`/` components to generate under `/` component <br> <img width="476" alt="screen shot 2018-01-15 at 10 16 00 am" src="https://user-images.githubusercontent.com/10753915/34956232-19ec2604-f9dd-11e7-98c1-9c32ef184261.png"> <br/> Reason: Whenever router sees `/` on the URL, it always renders the component that matches `/`. Since `/` and `/posts/new` both contain `/`, the `/` component will be rendered. To fix, do one of the following:
   1. Change `<Route path='/' component={foo}/>` to `<Route path='/' exact component={foo}/>` 
   2. import `Switch` from `react-router-dom`, then change code to the following. Make sure the most generic route is placed at the END: <img width="468" alt="screen shot 2018-01-15 at 10 22 05 am" src="https://user-images.githubusercontent.com/10753915/34956463-0964edf6-f9de-11e7-9bec-aaee189369d2.png">
-
+- `<Link>` generates an <a/> tag which responds to user click, therefore it's not appropriate for programmatic navigation e.g. redirection after form submission
 
 ## JSX
 - JSX gets transpiled into plain JS. To experiment the change, use https://babeljs.io/repl
@@ -120,8 +122,13 @@
   - `const {lat, lng} = city.coord`
 - [obj, ...arr2] ==> create a new array with obj and items from arr2
 - import statement: `import {foo} from '../actions/index';` can be simplified as `import {foo} from '../action';`
-- `const {meta} = field;` --> meta prop was pulled off from field
-- `const { meta: { touched, error } } = field;` -->  touched and error (nested) properties are pulled off from field.meta
+- Pulling off props from objects:
+  - one level: `const {meta} = field;` --> meta prop was pulled off from field
+  - two props from one-level: `const {meta, meta2} = field;` --> meta and meta2 props were pulled off from field
+  - nested: `const { meta: { touched, error } } = field;` -->  touched and error (nested) properties are pulled off from field.meta
+- The following are the same:
+  - ES5: `const newState = {...state}; newState[newKey] = newValue;`
+  - ES6: `const newState = {...state, [newKey]: newValue};`
     
 
 ## CSS

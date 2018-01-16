@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { createPost } from '../actions';
 import { Field, reduxForm } from 'redux-form';
 // redux-form https://redux-form.com/7.2.0/docs/api/field.md/
 // redux-form 1: 
@@ -37,7 +39,11 @@ class PostsNew extends Component {
   }
 
   onSubmit(values) {
-    console.log(values, 'values');
+    // console.log(values, 'values');
+
+    this.props.createPost(values, () => {
+      this.props.history.push('/'); // sends user back to '/' route using react-router function
+    });
   }
 
   render() {
@@ -88,15 +94,23 @@ function validate(values) {
   return errors;
 }
 
+// original
+// export default PostsNew;
+
 // redux-form 2:
 // redux-form add additional props to the component as this.props. When this.props is referenced
 // `form`: name of the form. If there are multiple forms in the site, use a unique name (can be any arbitrary string) to identify the form.
 // If form name is not unique, forms with the same name will be merged into one state
 // `validate` i.e. {validate: validate} is a function for validating the form
+// export default reduxForm({
+//   validate,
+//   form: 'PostsNewForm'
+// })(PostsNew);
+
+// combining redux-form helping with connect
 export default reduxForm({
   validate,
   form: 'PostsNewForm'
-})(PostsNew);
-
-
-// export default PostsNew;
+})(
+  connect(null, { createPost: createPost })(PostsNew)
+  );
