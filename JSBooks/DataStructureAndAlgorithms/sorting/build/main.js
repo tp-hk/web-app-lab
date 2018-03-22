@@ -180,49 +180,48 @@ function CArray(numElements) {
 }
 
 var ne1 = new CArray(100);
-// var ne1 = [5, 2, 6, 1, 3, 4];
-
-// print();
-// ne1.setData();
-// print('bubble sort');
-// print('original: ' + ne1.toString())
-// ne1.bubbleSort();
-// print('sorted ' + ne1.toString());
-
-// print();
-// ne1.setData();
-// print('selection sort');
-// print('original: ' + ne1.toString())
-// ne1.selectionSort();
-// print('sorted ' + ne1.toString());
-
-// print();
-// ne1.setData();
-// print('insertion sort');
-// print('original: ' + ne1.toString())
-// ne1.insertionSort();
-// print(ne1.toString());
-
-// print();
-// ne1.setData();
-// print('shell sort');
-// print('original: ' + ne1.toString())
-// ne1.shellSort();
-// print('sorted ' + ne1.toString());
-
-// print();
-// ne1.setData();
-// print('merge sort');
-// print('original: ' + ne1.toString())
-// ne1.mergeSort();
-// print('sorted ' + ne1.toString());
 
 print();
-ne1.setArray([5, 2, 6, 1, 3, 4]);
-print('quick sort');
-print('original: ' + ne1.toString());
-ne1.quickSort();
+ne1.setData();
+print('bubble sort');
+print('original: ' + ne1.toString())
+ne1.bubbleSort();
 print('sorted ' + ne1.toString());
+
+print();
+ne1.setData();
+print('selection sort');
+print('original: ' + ne1.toString())
+ne1.selectionSort();
+print('sorted ' + ne1.toString());
+
+print();
+ne1.setData();
+print('insertion sort');
+print('original: ' + ne1.toString())
+ne1.insertionSort();
+print(ne1.toString());
+
+print();
+ne1.setData();
+print('shell sort');
+print('original: ' + ne1.toString())
+ne1.shellSort();
+print('sorted ' + ne1.toString());
+
+print();
+ne1.setData();
+print('merge sort');
+print('original: ' + ne1.toString())
+ne1.mergeSort();
+print('sorted ' + ne1.toString());
+
+// print();
+// ne1.setArray([5, 2, 6, 1, 3, 4]);
+// print('quick sort');
+// print('original: ' + ne1.toString());
+// ne1.quickSort();
+// print('sorted ' + ne1.toString());
 
 
 
