@@ -1,0 +1,13 @@
+body {
+  background-color: #222;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.has-tooltip {
+  padding-bottom: 2px;
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-color: #fff;
+}
