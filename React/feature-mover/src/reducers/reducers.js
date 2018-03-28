@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
-import locations from './locations-reducers';
+import webmapId from './webmapId-reducer';
 
 const reducers = combineReducers ({
-  locations: locations,
+  webmapId: webmapId,
 });
 
 export default reducers;

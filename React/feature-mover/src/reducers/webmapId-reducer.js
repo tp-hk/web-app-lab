@@ -1,7 +1,7 @@
 import initialState from './initial-state';
-import * as types from '../constants/ActionTypes';
+import * as types from '../constants/action-types';
 
-const locations = (state = initialState.entities.locations, action) => {
+const webmapId = (state = initialState.entities.webmapId, action) => {
   switch (action.type) {
     case types.SET_WEBMAPID:
       console.log (`received ${action.payload.webmapId}`);
@@ -11,4 +11,4 @@ const locations = (state = initialState.entities.locations, action) => {
   return state;
 };
 
-export default locations;
+export default webmapId;

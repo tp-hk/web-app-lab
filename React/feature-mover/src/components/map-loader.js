@@ -1,5 +1,6 @@
 import React from 'react';
-import {WebMap} from 'react-arcgis';
+// import {WebMap} from 'react-arcgis';
+import MapContainer from './map-contaier';
 import ComponentBase from './component-base';
 import logo from '../style/info.svg';
 import {
@@ -64,6 +65,9 @@ class MapLoader extends ComponentBase {
               <FormControl
                 type="text"
                 value={this.state.webmapId}
+                onKeyPress={event => {
+                  if (event.key === 'Enter') this.handleSearchClick;
+                }}
                 onChange={this.handleWebmapIdChange}
                 placeholder="55cdda503e054b2a8b4967c716ecd42e"
               />
@@ -73,9 +77,7 @@ class MapLoader extends ComponentBase {
             </Col>
           </FormGroup>
         </Form>
-        <div style={{width: '100%', height: '500px'}}>
-          <WebMap id="55cdda503e054b2a8b4967c716ecd42e" />
-        </div>
+        <MapContainer />
       </div>
     );
   }

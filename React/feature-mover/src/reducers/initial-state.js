@@ -1,6 +1,7 @@
 const initialState = {
   ui: {},
   entities: {
+    webmapId: '',
     locations: {},
   },
 };
