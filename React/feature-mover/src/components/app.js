@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import logo from '../style/logo.svg';
 import '../style/header.css';
-import MapLoader from './map-loader';
+import MapSearchBar from './map-search-bar';
 
 class App extends Component {
   render () {
@@ -12,7 +12,7 @@ class App extends Component {
           <span className="app-title">feature - mover</span>
         </header>
 
-        <MapLoader />
+        <MapSearchBar />
       </div>
     );
   }

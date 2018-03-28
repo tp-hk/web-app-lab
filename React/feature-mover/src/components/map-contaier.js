@@ -3,6 +3,8 @@ import {WebMap} from 'react-arcgis';
 import ComponentBase from './component-base';
 import {connect} from 'react-redux';
 
+import {setMap, setView} from '../actions/index';
+
 class MapContainer extends ComponentBase {
   constructor (props) {
     super (props);
@@ -18,10 +20,8 @@ class MapContainer extends ComponentBase {
   handleMapLoad (map, view) {
     // map has loaded
 
-    this.setState ({
-      map,
-      view,
-    });
+    this.props.setMap (map);
+    this.props.setView (view);
   }
 
   handleMapFail (error) {
@@ -30,6 +30,8 @@ class MapContainer extends ComponentBase {
     const loadErrorMessage = error.details && error.details.message
       ? error.details.message
       : error.message;
+
+    alert (loadErrorMessage);
 
     this.setState ({
       loadErrorMessage,
@@ -42,7 +44,7 @@ class MapContainer extends ComponentBase {
     if (!this.props.webmapId) return null;
 
     return (
-      <div style={{width: '100%', height: '500px'}}>
+      <div style={{height: '800px', width: '60%'}}>
         <WebMap
           id={this.props.webmapId}
           onLoad={this.handleMapLoad}
@@ -60,4 +62,4 @@ function mapStateToProps (state) {
 }
 
 // export default MapContainer;
-export default connect (mapStateToProps) (MapContainer);
+export default connect (mapStateToProps, {setMap, setView}) (MapContainer);

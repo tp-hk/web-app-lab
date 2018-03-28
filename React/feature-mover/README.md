@@ -31,7 +31,7 @@ Set up index.js:
 
 Wire up in component: 
 - Need to `import {connect} from 'react-redux'`
-- Need to `import {anAction} from '../actions/an-action-creator';` for each action
+- Need to `import {anAction} from '../actions/index';` for each action
 - Add `function mapStateToProps(state){// return object}` to get access to store
 - Use `export default connect(mapStateToProps, {anAction, anotherAction})(ComponentName)` to get access to store and/or actions
 
