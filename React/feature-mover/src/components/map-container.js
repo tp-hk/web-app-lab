@@ -44,7 +44,7 @@ class MapContainer extends ComponentBase {
     if (!this.props.webmapId) return null;
 
     return (
-      <div style={{height: '800px', width: '60%'}}>
+      <div style={{height: '800px', width: '100%'}}>
         <WebMap
           id={this.props.webmapId}
           onLoad={this.handleMapLoad}
