@@ -61,5 +61,4 @@ function mapStateToProps (state) {
   };
 }
 
-// export default MapContainer;
 export default connect (mapStateToProps, {setMap, setView}) (MapContainer);

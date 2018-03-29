@@ -39,11 +39,6 @@ class MapSearchBar extends ComponentBase {
     this.props.searchWebmap (this.state.webmapId);
   }
 
-  handleDrawGraphic (evt) {
-    evt.preventDefault ();
-    alert ('draw graphics');
-  }
-
   render () {
     const tooltipMessage = (
       <Tooltip id="map-requirement-tooltip">
@@ -57,7 +52,7 @@ class MapSearchBar extends ComponentBase {
           <Col componentClass={ControlLabel} smOffset={1} sm={4}>
             <div>
               <OverlayTrigger placement="bottom" overlay={tooltipMessage}>
-                <span className="has-tooltip">
+                <span className="has-tooltip" style={{fontWeight: 'initial'}}>
                   Enter ArcGIS Online webmap ID <Badge>?</Badge>
                 </span>
               </OverlayTrigger>

@@ -2,6 +2,7 @@ import React from 'react';
 import ComponentBase from './component-base';
 import MapSearchBar from './map-search-bar';
 import MapContainer from './map-container';
+import SchemaTable from './schema-table';
 import {
   Form,
   FormGroup,
@@ -28,7 +29,7 @@ class FeatureCreatorContainer extends ComponentBase {
 
   render () {
     // Grid width width must be set to '100%' using inline style
-    // TODO: remove className="fcc1" and import CSS statement
+    // TODO: remove className="fcc1", remove import CSS statement, remove css file
 
     return (
       <Grid className="fcc1" style={{width: '100%'}}>
@@ -42,7 +43,32 @@ class FeatureCreatorContainer extends ComponentBase {
             <MapContainer />
           </Col>
           <Col sm={4} md={4} lg={4}>
-            <div>TABLE</div>
+            <Grid style={{width: '100%'}}>
+              <Row
+                style={{
+                  maxHeight: '400px',
+                  overflowY: 'scroll',
+                  overflowX: 'scroll',
+                }}
+              >
+                <Col>
+                  <SchemaTable />
+                </Col>
+              </Row>
+              <Row
+                style={{
+                  maxHeight: '400px',
+                  overflowY: 'scroll',
+                  overflowX: 'scroll',
+                }}
+              >
+                <Col>
+                  <div>
+                    File uploader
+                  </div>
+                </Col>
+              </Row>
+            </Grid>
           </Col>
         </Row>
       </Grid>
