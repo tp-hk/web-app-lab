@@ -2,10 +2,11 @@ import React from 'react';
 import ComponentBase from './component-base';
 import {Well, Table, thead, tr, th, tbody, td} from 'react-bootstrap';
 import {connect} from 'react-redux';
+import SettingContainer from './setting-container';
 
 class SchemaTable extends ComponentBase {
-  constructor (props) {
-    super (props);
+  constructor () {
+    super ();
   }
 
   shouldComponentUpdate (nextProps, nextState) {
@@ -35,11 +36,10 @@ class SchemaTable extends ComponentBase {
       });
 
       return (
-        <div>
-          <h3>Layer schema</h3>
-          <span className="small">
-            Create a csv file with the following fields. Fill out the file with attributes
-          </span>
+        <SettingContainer
+          title="Layer schema"
+          subTitle="Create a csv file with the following fields. Fill out the file with attributes"
+        >
           <Table striped condensed hover>
             <thead>
               <tr>
@@ -51,7 +51,7 @@ class SchemaTable extends ComponentBase {
               {rows}
             </thead>
           </Table>
-        </div>
+        </SettingContainer>
       );
     }
   }

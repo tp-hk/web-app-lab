@@ -1,6 +1,9 @@
 body {
-  background-color: #222;
-  color: #E0E0E0;
+  background-image: url('./dark_embroidery.png');
+  background-repeat: repeat;
+  /* background-color: #222; */
+  /* color: #E0E0E0; */
+  color: #fff;
   margin: 0;
   padding: 0;
 }
@@ -15,4 +18,8 @@ body {
 
 .small{
   font-size: 12px;
+}
+
+.underline{
+  border-bottom: 1px solid;
 }

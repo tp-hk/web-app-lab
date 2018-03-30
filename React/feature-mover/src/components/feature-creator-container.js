@@ -3,6 +3,7 @@ import ComponentBase from './component-base';
 import MapSearchBar from './map-search-bar';
 import MapContainer from './map-container';
 import SchemaTable from './schema-table';
+import CsvUploader from './csv-uploader';
 import {
   Form,
   FormGroup,
@@ -17,6 +18,7 @@ import {
   Col,
 } from 'react-bootstrap';
 import '../style/feature-creator-container.css';
+import csvUploader from './csv-uploader';
 
 class FeatureCreatorContainer extends ComponentBase {
   // contains all the UI that will be displayed in the "create-feature" route
@@ -63,9 +65,7 @@ class FeatureCreatorContainer extends ComponentBase {
                 }}
               >
                 <Col>
-                  <div>
-                    File uploader
-                  </div>
+                  <CsvUploader />
                 </Col>
               </Row>
             </Grid>
