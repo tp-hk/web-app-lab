@@ -9,10 +9,24 @@ class XLSParser extends BaseComponent {
   constructor(props) {
     super(props);
 
-    this._bind('handleFile', 'exportFile');
+    this._bind('handleFile', 
+    'handleurlSheetsSelectionChange', 
+    'handleURLColChange',
+    'handleSrcMappingColChange', 
+    'handleTargetSheetSelectionChange', 
+    'handleResultColChange', 
+    'handleTargetMappingColChange', 
+    'handleAppendURLButtonClick', 
+    'exportFile');
 
     this.state = {
-      tabNames: [],
+      allSheets: [],
+      srcUrlSheets: {},
+      srcUrlCol: '',
+      srcMappingCol: '',
+      targetSheet: '',
+      targetResultCol: '',
+      targetMappingCol: '',
       tests: []
     }
   }
@@ -36,11 +50,12 @@ class XLSParser extends BaseComponent {
 
       /* Update state */
       // this.setState({ data: data, cols: make_cols(ws['!ref']) });
-      console.log(`data is ${data}`);
+      // console.log(`data is ${data}`);
 
       /* Get first worksheet */
       this.setState({
-        tabNames: wb.SheetNames,
+        allSheets: wb.SheetNames,
+        targetSheet: wb.SheetNames[0],
         tests: data
       });
 
@@ -52,6 +67,54 @@ class XLSParser extends BaseComponent {
       reader.readAsArrayBuffer(file);
   }
 
+  handleurlSheetsSelectionChange(evt){
+    const val = evt.target.value;
+    let srcUrlSheets = this.state.srcUrlSheets;
+
+    if(srcUrlSheets[val])
+      delete srcUrlSheets[val];
+    else 
+    srcUrlSheets[val] = val;
+
+    this.setState({
+      srcUrlSheets
+    });
+  }
+
+  handleURLColChange(evt){
+    this.setState({
+      srcUrlCol: evt.target.value
+    });
+  }
+
+  handleSrcMappingColChange(evt){
+    this.setState({
+      srcMappingCol: evt.target.value
+    });
+  }
+
+  handleTargetSheetSelectionChange(evt){
+    this.setState({
+      targetSheet: evt.target.value
+    });
+  }
+
+  handleResultColChange(evt){
+    this.setState({
+      targetResultCol: evt.target.value
+    });
+  }
+
+  handleTargetMappingColChange(evt){
+    this.setState({
+      targetMappingCol: evt.target.value
+    });
+  }
+
+  handleAppendURLButtonClick(evt){
+    console.log('button click');
+  }
+
   exportFile() {
     alert('exporting file');
   }
@@ -61,12 +124,12 @@ class XLSParser extends BaseComponent {
       <h4>Append Screenshot URLs to Test Cases</h4>
       <DataInput title='Browse for Excel file' handleFile={this.handleFile} />
       <Well>
-          <h4>Source sheets with screenshot URLs</h4>
+          <h5>Source sheets with screenshot URLs</h5>
           <FormGroup controlId='screenshots-selector'>
           <ControlLabel>Choose the source sheets:</ControlLabel>
           {
-            this.state.tabNames.map(tabName => {
-              return <Checkbox key={tabName}>{tabName}</Checkbox>;
+            this.state.allSheets.map(tabName => {
+              return <Checkbox key={tabName} onChange={this.handleurlSheetsSelectionChange} value={tabName}>{tabName}</Checkbox>;
             })
           }
         </FormGroup>
@@ -76,23 +139,25 @@ class XLSParser extends BaseComponent {
             id='sc-mapping-col-src'
             type='text'
             placeholder='B'
+            onChange={this.handleURLColChange}
           />  
           <ControlLabel>Mapping column:</ControlLabel>
           <FormControl
             id='sc-mapping-col-src'
             type='text'
             placeholder='A'
+            onChange={this.handleSrcMappingColChange}
           />  
         </FormGroup>
         </Well>
 
         <Well>
-          <h4>Target sheet where the screenshot URLs will append to</h4>
+          <h5>Target sheet where the screenshot URLs will append to</h5>
           <FormGroup controlId='tests-sheet-selector'>
             <ControlLabel>Choose the target sheet:</ControlLabel>
-            <FormControl componentClass='select' placeholder='Choose a sheet'>
+            <FormControl componentClass='select' placeholder='Choose a sheet' onChange={this.handleTargetSheetSelectionChange}>
               {
-                this.state.tabNames.map(tabName => {
+                this.state.allSheets.map(tabName => {
                   return <option key={tabName} value={tabName}>{tabName}</option>;
                 })
               }
@@ -104,18 +169,20 @@ class XLSParser extends BaseComponent {
               id='result-col'
               type='text'
               placeholder='B'
+              onChange={this.handleResultColChange}
             />
             <ControlLabel>Mapping column</ControlLabel>
             <FormControl
               id='sc-mapping-col-target'
               type='text'
               placeholder='C'
+              onChange={this.handleTargetMappingColChange}
             />
           </FormGroup>
           <FormGroup>
           </FormGroup>
         </Well>
-        <Button>Run</Button>
+        <Button onClick={this.handleAppendURLButtonClick}>Run</Button>
     </div>
   }
 }

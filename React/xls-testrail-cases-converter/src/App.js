@@ -10,7 +10,7 @@ class App extends Component {
       <div>
         <header className="App-header App">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Ops Dashboard Tests Migration Utilities</h1>
+          <h1 className="App-title">Ops Dashboard QA Utilities</h1>
         </header>
         <ContentContainer/>
       </div>
