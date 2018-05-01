@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 class BaseComponent extends Component {
-  constructor(props){
-    super(props)
-  }
+  // constructor(props){
+  //   super(props)
+  // }
 
   _bind(...methods){
     methods.forEach((method) => {

@@ -1,0 +1,17 @@
+/* .tabs-selector {
+  margin: 5px;
+} */
+
+.well {
+  max-width: 80%;
+  margin: 10px 0;
+}
+
+.checkbox {
+  font-size: 0.9em;
+  margin: auto 10px;  
+}
+
+select, input{
+  max-width: 500px;
+}
