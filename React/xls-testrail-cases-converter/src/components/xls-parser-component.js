@@ -4,6 +4,7 @@ import '../style/xls-parser.css';
 import DataInput from './data-input';
 import XLSX from 'xlsx';
 import { FormGroup, Checkbox, ControlLabel, FormControl, Well, Button } from 'react-bootstrap';
+import DataCopier from '../helpers/data-copier';
 
 class XLSParser extends BaseComponent {
   constructor(props) {
@@ -11,16 +12,10 @@ class XLSParser extends BaseComponent {
 
     this._bind('handleFile', 
     'handleurlSheetsSelectionChange', 
-    'handleURLColChange',
-    'handleSrcMappingColChange', 
-    'handleTargetSheetSelectionChange', 
-    'handleResultColChange', 
-    'handleTargetMappingColChange', 
-    'handleAppendURLButtonClick', 
-    'exportFile');
+    'handleAppendURLButtonClick');
 
     this.state = {
-      allSheets: [],
+      workbook: {},
       srcUrlSheets: {},
       srcUrlCol: '',
       srcMappingCol: '',
@@ -54,7 +49,7 @@ class XLSParser extends BaseComponent {
 
       /* Get first worksheet */
       this.setState({
-        allSheets: wb.SheetNames,
+        workbook: wb,
         targetSheet: wb.SheetNames[0],
         tests: data
       });
@@ -81,45 +76,31 @@ class XLSParser extends BaseComponent {
     });
   }
 
-  handleURLColChange(evt){
-    this.setState({
-      srcUrlCol: evt.target.value
-    });
-  }
-
-  handleSrcMappingColChange(evt){
-    this.setState({
-      srcMappingCol: evt.target.value
-    });
-  }
-
-  handleTargetSheetSelectionChange(evt){
-    this.setState({
-      targetSheet: evt.target.value
-    });
-  }
-
-  handleResultColChange(evt){
-    this.setState({
-      targetResultCol: evt.target.value
-    });
-  }
-
-  handleTargetMappingColChange(evt){
-    this.setState({
-      targetMappingCol: evt.target.value
-    });
-  }
-
   handleAppendURLButtonClick(evt){
-    console.log('button click');
-  }
+    // create an empty URLObject {imgName: url}
+    // for each URL sheet, go through each row, add to URLObject
+    // let urlObjects = {};
+    // let urlSheetNames = Object.keys(this.state.srcUrlSheets);
 
-  exportFile() {
-    alert('exporting file');
+    // urlSheetNames.forEach(wsname => {
+    //   const ws = this.state.workbook.Sheets[wsname];
+
+    //   const cols = ws['!cols'];
+    //   console.log(cols);
+    // });
+
+    let dc = new DataCopier(this.state.workbook);
+    dc.appendData(Object.keys(this.state.srcUrlSheets), 
+    this.state.srcUrlCol, 
+    this.state.srcMappingCol,
+    this.state.targetSheet, 
+    this.state.targetResultCol, 
+    this.state.targetMappingCol);
   }
 
   render() {
+    const sheets = this.state.workbook.SheetNames? this.state.workbook.SheetNames: [];
+
     return <div>
       <h4>Append Screenshot URLs to Test Cases</h4>
       <DataInput title='Browse for Excel file' handleFile={this.handleFile} />
@@ -128,7 +109,7 @@ class XLSParser extends BaseComponent {
           <FormGroup controlId='screenshots-selector'>
           <ControlLabel>Choose the source sheets:</ControlLabel>
           {
-            this.state.allSheets.map(tabName => {
+            sheets.map(tabName => {
               return <Checkbox key={tabName} onChange={this.handleurlSheetsSelectionChange} value={tabName}>{tabName}</Checkbox>;
             })
           }
@@ -138,15 +119,23 @@ class XLSParser extends BaseComponent {
           <FormControl
             id='sc-mapping-col-src'
             type='text'
-            placeholder='B'
-            onChange={this.handleURLColChange}
+            placeholder='D'
+            onChange={evt => {
+              this.setState({
+                srcUrlCol: evt.target.value
+              });
+            }}
           />  
           <ControlLabel>Mapping column:</ControlLabel>
           <FormControl
             id='sc-mapping-col-src'
             type='text'
             placeholder='A'
-            onChange={this.handleSrcMappingColChange}
+            onChange={evt => {
+              this.setState({
+                srcMappingCol: evt.target.value
+              });
+            }}
           />  
         </FormGroup>
         </Well>
@@ -155,9 +144,13 @@ class XLSParser extends BaseComponent {
           <h5>Target sheet where the screenshot URLs will append to</h5>
           <FormGroup controlId='tests-sheet-selector'>
             <ControlLabel>Choose the target sheet:</ControlLabel>
-            <FormControl componentClass='select' placeholder='Choose a sheet' onChange={this.handleTargetSheetSelectionChange}>
+            <FormControl componentClass='select' placeholder='Choose a sheet' onChange={evt => {
+              this.setState({
+                targetSheet: evt.target.value
+              });
+            }}>
               {
-                this.state.allSheets.map(tabName => {
+                sheets.map(tabName => {
                   return <option key={tabName} value={tabName}>{tabName}</option>;
                 })
               }
@@ -168,15 +161,23 @@ class XLSParser extends BaseComponent {
             <FormControl
               id='result-col'
               type='text'
-              placeholder='B'
-              onChange={this.handleResultColChange}
+              placeholder='D'
+              onChange={evt => {
+                this.setState({
+                  targetResultCol: evt.target.value
+                });
+              }}
             />
             <ControlLabel>Mapping column</ControlLabel>
             <FormControl
               id='sc-mapping-col-target'
               type='text'
-              placeholder='C'
-              onChange={this.handleTargetMappingColChange}
+              placeholder='E'
+              onChange={evt => {
+                this.setState({
+                  targetMappingCol: evt.target.value
+                });
+              }}
             />
           </FormGroup>
           <FormGroup>
