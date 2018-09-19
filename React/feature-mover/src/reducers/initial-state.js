@@ -5,6 +5,7 @@ const initialState = {
     map: null,
     view: null,
     locations: {},
+    newFeatures: {},
   },
 };
 export default initialState;
