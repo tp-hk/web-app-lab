@@ -1,24 +1,24 @@
 import React from 'react';
 import ComponentBase from './component-base';
-import {Well, Table, thead, tr, th, tbody, td} from 'react-bootstrap';
-import {connect} from 'react-redux';
+import { Table } from 'react-bootstrap';
+import { connect } from 'react-redux';
 import SettingContainer from './setting-container';
 
 class SchemaTable extends ComponentBase {
-  constructor () {
-    super ();
+  constructor(props) {
+    super(props);
   }
 
-  shouldComponentUpdate (nextProps, nextState) {
+  shouldComponentUpdate(nextProps, nextState) {
     return nextProps.fields;
   }
 
-  render () {
+  render() {
     if (!this.props.fields) {
       return null;
     } else {
-      const rows = this.props.fields.map (field => {
-        const {name, type, nullable, length} = field;
+      const rows = this.props.fields.map(field => {
+        const { name, type, nullable, length } = field;
 
         if (type === 'oid') {
           // skip the field when trying to create new features
@@ -27,7 +27,7 @@ class SchemaTable extends ComponentBase {
 
         return (
           <tr key={name}>
-            <td style={{fontWeight: 'bold'}}>{name}</td>
+            <td style={{ fontWeight: 'bold' }}>{name}</td>
             <td>{type}</td>
             <td>{nullable ? 'yes' : 'no'}</td>
             <td>{length === -1 ? 'N/A' : length}</td>
@@ -57,11 +57,11 @@ class SchemaTable extends ComponentBase {
   }
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return {
     fields: state.map ? state.map.layers.items[0].fields : null,
   };
 }
 
 // export default SchemaTable;
-export default connect (mapStateToProps) (SchemaTable);
+export default connect(mapStateToProps)(SchemaTable);

@@ -1,5 +1,7 @@
 const initialState = {
-  ui: {},
+  ui: {
+    editOption: 'create'
+  },
   entities: {
     webmapId: '',
     map: null,

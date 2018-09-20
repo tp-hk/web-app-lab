@@ -4,6 +4,7 @@ import MapSearchBar from './map-search-bar';
 import MapContainer from './map-container';
 import SchemaTable from './schema-table';
 import CsvUploader from './csv-uploader';
+import EditOptionPicker from './edit-option-picker';
 import {
   Form,
   FormGroup,
@@ -23,18 +24,18 @@ import csvUploader from './csv-uploader';
 class FeatureCreatorContainer extends ComponentBase {
   // contains all the UI that will be displayed in the "create-feature" route
 
-  constructor (props) {
-    super (props);
+  constructor(props) {
+    super(props);
     // this._bind ('');
     // 55cdda503e054b2a8b4967c716ecd42e
   }
 
-  render () {
+  render() {
     // Grid width width must be set to '100%' using inline style
     // TODO: remove className="fcc1", remove import CSS statement, remove css file
 
     return (
-      <Grid className="fcc1" style={{width: '100%'}}>
+      <Grid className="fcc1" style={{ width: '100%' }}>
         <Row>
           <Col>
             <MapSearchBar />
@@ -45,7 +46,7 @@ class FeatureCreatorContainer extends ComponentBase {
             <MapContainer />
           </Col>
           <Col sm={4} md={4} lg={4}>
-            <Grid style={{width: '100%'}}>
+            <Grid style={{ width: '100%' }}>
               <Row
                 style={{
                   maxHeight: '400px',
@@ -56,6 +57,14 @@ class FeatureCreatorContainer extends ComponentBase {
                 <Col>
                   <SchemaTable />
                 </Col>
+              </Row>
+              <Row
+                style={{
+                  maxHeight: '400px',
+                  overflowY: 'scroll',
+                  overflowX: 'scroll',
+                }}>
+                <EditOptionPicker />
               </Row>
               <Row
                 style={{
