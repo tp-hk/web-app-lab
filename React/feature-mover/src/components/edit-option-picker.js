@@ -14,8 +14,8 @@ class EditOptionPicker extends ComponentBase {
       return null;
     } else {
       return (<SettingContainer
-        title="Edit option"
-        subTitle="Choose to update existing features or create new features"
+        title='Edit option'
+        subTitle='Choose to update existing features or create new features'
       >
         <div>
           <Button bsStyle='primary' onClick={() => {

@@ -51,7 +51,6 @@ class FeatureCreatorContainer extends ComponentBase {
                 style={{
                   maxHeight: '400px',
                   overflowY: 'scroll',
-                  overflowX: 'scroll',
                 }}
               >
                 <Col>
@@ -60,17 +59,13 @@ class FeatureCreatorContainer extends ComponentBase {
               </Row>
               <Row
                 style={{
-                  maxHeight: '400px',
-                  overflowY: 'scroll',
-                  overflowX: 'scroll',
+                  maxHeight: '400px'
                 }}>
                 <EditOptionPicker />
               </Row>
               <Row
                 style={{
-                  maxHeight: '400px',
-                  overflowY: 'scroll',
-                  overflowX: 'scroll',
+                  maxHeight: '400px'
                 }}
               >
                 <Col>

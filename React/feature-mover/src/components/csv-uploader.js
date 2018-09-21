@@ -29,25 +29,31 @@ class CsvUploader extends ComponentBase {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.fields;
+    if(!nextProps.fields)
+      return false;
+
+    return this.props.editOption !== nextProps.editOption;
   }
 
   render() {
-    if (!this.props.fields) {
+    if (!this.props.editOption) {
       return null;
     }
 
+    let subTitle = 'Upload a CSV with the above layer schema and feature attributes. ';
+    subTitle += this.props.editOption === 'create'? 'A new feature will be created for each row': 'Each row will be used to update a selected feature' 
+
     return (
       <SettingContainer
-        title="Upload CSV"
-        subTitle="Upload the CSV with the attributes"
+        title='Upload CSV'
+        subTitle={subTitle}
       >
         <h4>
           <input
-            type="file"
-            id="file"
-            accept="text/csv"
-            className="file-picker"
+            type='file'
+            id='file'
+            accept='text/csv'
+            className='file-picker'
             onChange={this.handleFileChange}
           />
           <Label style={{ cursor: 'pointer' }}>
@@ -63,6 +69,7 @@ function mapStateToProps(state) {
   return {
     fields: state.map ? state.map.layers.items[0].fields : null,
     newFeatures: state.newFeatures,
+    editOption: state.editOption
   };
 }
 
