@@ -2,24 +2,16 @@ import React from 'react';
 import ComponentBase from './component-base';
 import MapSearchBar from './map-search-bar';
 import MapContainer from './map-container';
-import SchemaTable from './schema-table';
+// import SchemaTable from './schema-table';
 import CsvUploader from './csv-uploader';
 import EditOptionPicker from './edit-option-picker';
+import UpdateSettings from './update-settings';
 import {
-  Form,
-  FormGroup,
-  ControlLabel,
-  FormControl,
-  OverlayTrigger,
-  Tooltip,
-  Badge,
-  Button,
   Grid,
   Row,
   Col,
 } from 'react-bootstrap';
 import '../style/feature-creator-container.css';
-import csvUploader from './csv-uploader';
 
 class FeatureCreatorContainer extends ComponentBase {
   // contains all the UI that will be displayed in the "create-feature" route
@@ -36,42 +28,54 @@ class FeatureCreatorContainer extends ComponentBase {
 
     return (
       <Grid className="fcc1" style={{ width: '100%' }}>
+
+        {/* Search bar */}
         <Row>
           <Col>
             <MapSearchBar />
           </Col>
         </Row>
+
         <Row>
+
+          {/* Map */}
           <Col sm={8} md={8} lg={8}>
             <MapContainer />
           </Col>
+
           <Col sm={4} md={4} lg={4}>
             <Grid style={{ width: '100%' }}>
-              <Row
-                style={{
-                  maxHeight: '400px',
-                  overflowY: 'scroll',
-                }}
-              >
-                <Col>
-                  <SchemaTable />
-                </Col>
-              </Row>
+
+              {/* Edit options */}
               <Row
                 style={{
                   maxHeight: '400px'
                 }}>
-                <EditOptionPicker />
+                <Col>
+                  <EditOptionPicker />
+                </Col>
               </Row>
+
+              {/* CSV uploader */}
               <Row
                 style={{
                   maxHeight: '400px'
-                }}
-              >
+                }}>
                 <Col>
                   <CsvUploader />
                 </Col>
               </Row>
+
+              {/* Settings */}
+              <Row
+                style={{
+                  maxHeight: '400px'
+                }}>
+                <Col>
+                  <UpdateSettings />
+                </Col>
+              </Row>
+
             </Grid>
           </Col>
         </Row>

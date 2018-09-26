@@ -1,6 +1,7 @@
 import React from 'react';
 import ComponentBase from './component-base';
 import SettingContainer from './setting-container';
+import SchemaTable from './schema-table';
 import { Label } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { uploadNewAttributes } from '../actions/index';
@@ -20,16 +21,20 @@ class CsvUploader extends ComponentBase {
     const file = evt.target.files[0];
     const reader = new FileReader();
 
+    reader.onload = () => {
+
+      const content = reader.result;
+
+      console.log(content);
+
+      this.props.uploadNewAttributes(content);
+
+    }
     reader.readAsText(file);
-    const content = reader.result;
-
-    console.log(content);
-
-    this.props.uploadNewAttributes(content);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    if(!nextProps.fields)
+    if (!nextProps.fields)
       return false;
 
     return this.props.editOption !== nextProps.editOption;
@@ -40,8 +45,8 @@ class CsvUploader extends ComponentBase {
       return null;
     }
 
-    let subTitle = 'Upload a CSV with the above layer schema and feature attributes. ';
-    subTitle += this.props.editOption === 'create'? 'A new feature will be created for each row': 'Each row will be used to update a selected feature' 
+    let subTitle = 'Upload a CSV file with the following fields. Fill out the file with attributes. ';
+    subTitle += this.props.editOption === 'create' ? 'A new feature will be created for each row' : 'Each row will be used to update a selected feature'
 
     return (
       <SettingContainer
@@ -60,6 +65,8 @@ class CsvUploader extends ComponentBase {
             Choose File
           </Label>
         </h4>
+
+        <SchemaTable />
       </SettingContainer>
     );
   }

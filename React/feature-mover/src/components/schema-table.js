@@ -2,7 +2,8 @@ import React from 'react';
 import ComponentBase from './component-base';
 import { Table } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import SettingContainer from './setting-container';
+// import SettingContainer from './setting-container';
+// import '../style/schema-table.css';
 
 class SchemaTable extends ComponentBase {
   constructor(props) {
@@ -36,22 +37,22 @@ class SchemaTable extends ComponentBase {
       });
 
       return (
-        <SettingContainer
-          title="Layer schema"
-          subTitle="Create a csv file with the following fields. Fill out the file with attributes"
-        >
-          <Table striped condensed hover>
-            <thead>
-              <tr>
-                <th>Field name</th>
-                <th>Field type</th>
-                <th>Can be empty?</th>
-                <th>Length (char)</th>
-              </tr>
-              {rows}
-            </thead>
-          </Table>
-        </SettingContainer>
+        // <SettingContainer
+        //   title="Layer schema"
+        //   subTitle="Create a csv file with the following fields. Fill out the file with attributes"
+        // >
+        <Table>
+          <thead>
+            <tr>
+              <th>Field name</th>
+              <th>Field type</th>
+              <th>Can be empty?</th>
+              <th>Length (char)</th>
+            </tr>
+            {rows}
+          </thead>
+        </Table>
+        // </SettingContainer>
       );
     }
   }
