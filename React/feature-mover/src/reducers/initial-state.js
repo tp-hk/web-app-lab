@@ -7,7 +7,7 @@ const initialState = {
     map: null,
     view: null,
     locations: {},
-    newFeatures: {},
+    newFeatures: null,
   },
 };
 export default initialState;

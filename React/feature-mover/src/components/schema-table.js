@@ -2,8 +2,7 @@ import React from 'react';
 import ComponentBase from './component-base';
 import { Table } from 'react-bootstrap';
 import { connect } from 'react-redux';
-// import SettingContainer from './setting-container';
-// import '../style/schema-table.css';
+import '../style/schema-table.css';
 
 class SchemaTable extends ComponentBase {
   constructor(props) {
@@ -41,7 +40,7 @@ class SchemaTable extends ComponentBase {
         //   title="Layer schema"
         //   subTitle="Create a csv file with the following fields. Fill out the file with attributes"
         // >
-        <Table>
+        <Table id='schema-table'>
           <thead>
             <tr>
               <th>Field name</th>

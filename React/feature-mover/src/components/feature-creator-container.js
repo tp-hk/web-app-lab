@@ -11,6 +11,7 @@ import {
   Row,
   Col,
 } from 'react-bootstrap';
+import { connect } from 'react-redux';
 import '../style/feature-creator-container.css';
 
 class FeatureCreatorContainer extends ComponentBase {
@@ -26,6 +27,12 @@ class FeatureCreatorContainer extends ComponentBase {
     // Grid width width must be set to '100%' using inline style
     // TODO: remove className="fcc1", remove import CSS statement, remove css file
 
+    // 
+    const mapContainer = this.props.webmapId ? <MapContainer /> : null;
+    const editOptionPicker = this.props.fields ? <EditOptionPicker /> : null;
+    const csvUploader = this.props.editOption ? <CsvUploader /> : null;
+    const updateSettings = this.props.features ? <UpdateSettings /> : null;
+
     return (
       <Grid className="fcc1" style={{ width: '100%' }}>
 
@@ -40,39 +47,31 @@ class FeatureCreatorContainer extends ComponentBase {
 
           {/* Map */}
           <Col sm={8} md={8} lg={8}>
-            <MapContainer />
+            {mapContainer}
           </Col>
 
           <Col sm={4} md={4} lg={4}>
             <Grid style={{ width: '100%' }}>
 
               {/* Edit options */}
-              <Row
-                style={{
-                  maxHeight: '400px'
-                }}>
+              <Row>
                 <Col>
-                  <EditOptionPicker />
+                  {editOptionPicker}
                 </Col>
               </Row>
 
               {/* CSV uploader */}
-              <Row
-                style={{
-                  maxHeight: '400px'
-                }}>
+
+              <Row>
                 <Col>
-                  <CsvUploader />
+                  {csvUploader}
                 </Col>
               </Row>
 
               {/* Settings */}
-              <Row
-                style={{
-                  maxHeight: '400px'
-                }}>
+              <Row>
                 <Col>
-                  <UpdateSettings />
+                  {updateSettings}
                 </Col>
               </Row>
 
@@ -84,4 +83,13 @@ class FeatureCreatorContainer extends ComponentBase {
   }
 }
 
-export default FeatureCreatorContainer;
+function mapStateToProps(state) {
+  return {
+    webmapId: state.webmapId,
+    fields: state.map ? state.map.layers.items[0].fields : null,
+    editOption: state.editOption,
+    features: state.newFeatures ? state.newFeatures : null,
+  };
+}
+
+export default connect(mapStateToProps)(FeatureCreatorContainer);

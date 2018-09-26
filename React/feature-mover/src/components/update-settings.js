@@ -1,6 +1,11 @@
 import React from 'react';
 import ComponentBase from './component-base';
 import SettingContainer from './setting-container';
+import {
+  Grid,
+  Row,
+  Col,
+} from 'react-bootstrap';
 
 class UpdateSettings extends ComponentBase {
 
@@ -10,7 +15,9 @@ class UpdateSettings extends ComponentBase {
       <SettingContainer
         title="Feature creation settings"
       >
-        <input type='text'></input>
+        <Grid>
+
+        </Grid>
       </SettingContainer>
     )
   }
