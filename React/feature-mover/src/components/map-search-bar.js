@@ -34,7 +34,7 @@ class MapSearchBar extends ComponentBase {
 
   handleSearchClick = (evt) => {
     evt.preventDefault();
-    console.log('searching ' + this.state.webmapId);
+    // console.log('searching ' + this.state.webmapId);
     this.props.searchWebmap(this.state.webmapId);
   }
 
@@ -61,7 +61,7 @@ class MapSearchBar extends ComponentBase {
             <FormControl
               type='text'
               value={this.state.webmapId}
-              onKeyPress={event => { if(event.keyCode === 13) this.handleSearchClick(); }}
+              onKeyPress={event => { if (event.keyCode === 13) this.handleSearchClick(); }}
               onSubmit={this.handleSearchClick}
               onChange={this.handleWebmapIdChange}
               placeholder='55cdda503e054b2a8b4967c716ecd42e'
