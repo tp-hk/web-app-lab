@@ -41,7 +41,7 @@ class MapSearchBar extends ComponentBase {
   render() {
     const tooltipMessage = (
       <Tooltip id='map-requirement-tooltip'>
-        The webmap and the feature layer must be shared to the public. If multiple layers are found in the map, the first one will be used. The layer must allow updating and adding features.
+        The webmap and the feature layer must be shared to the public. If multiple layers exist in the map, the first one will be used. The layer must allow updating and adding features.
       </Tooltip>
     );
 

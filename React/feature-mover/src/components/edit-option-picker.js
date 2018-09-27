@@ -1,6 +1,7 @@
 import React from 'react';
 import SettingContainer from './setting-container';
 import {
+  ButtonGroup,
   Button
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
@@ -10,7 +11,7 @@ function EditOptionPicker(props) {
   return (<SettingContainer
     title='Edit option'
   >
-    <div>
+    <ButtonGroup>
       <Button bsStyle='primary' onClick={() => {
         props.setEditOption('create');
       }}>
@@ -21,7 +22,7 @@ function EditOptionPicker(props) {
       }}>
         Update Features
     </Button>
-    </div>
+    </ButtonGroup>
   </SettingContainer>)
 }
 

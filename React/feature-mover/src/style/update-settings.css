@@ -1,3 +1,14 @@
 #update-settings-table {
+  width: 100%;
+  padding-left: 0;
+}
 
+#update-settings-table div{
+  margin: 2px auto;
+  padding-left: 0;
+}
+
+#update-settings-table span{
+  vertical-align: top;
+  margin: auto 3px;
 }

@@ -1,8 +1,9 @@
 import React from 'react';
 import ComponentBase from './component-base';
 import MapSearchBar from './map-search-bar';
-import MapContainer from './map-container';
+// import MapContainer from './map-container';
 // import SchemaTable from './schema-table';
+import MapSchemaTabPane from './map-schema-tab-pane';
 import CsvUploader from './csv-uploader';
 import EditOptionPicker from './edit-option-picker';
 import UpdateSettings from './update-settings';
@@ -19,16 +20,14 @@ class FeatureCreatorContainer extends ComponentBase {
 
   constructor(props) {
     super(props);
-    // this._bind ('');
-    // 55cdda503e054b2a8b4967c716ecd42e
   }
 
   render() {
     // Grid width width must be set to '100%' using inline style
     // TODO: remove className="fcc1", remove import CSS statement, remove css file
 
-    // 
-    const mapContainer = this.props.webmapId ? <MapContainer /> : null;
+    // control the visibility of child elements
+    const mapSchemaTabPane = this.props.webmapId ? <MapSchemaTabPane /> : null;
     const editOptionPicker = this.props.fields ? <EditOptionPicker /> : null;
     const csvUploader = this.props.editOption ? <CsvUploader /> : null;
     const updateSettings = this.props.features ? <UpdateSettings /> : null;
@@ -47,7 +46,7 @@ class FeatureCreatorContainer extends ComponentBase {
 
           {/* Map */}
           <Col sm={8} md={8} lg={8}>
-            {mapContainer}
+            {mapSchemaTabPane}
           </Col>
 
           <Col sm={4} md={4} lg={4}>

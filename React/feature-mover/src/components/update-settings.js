@@ -5,7 +5,9 @@ import {
   Grid,
   Row,
   Col,
-  FormControl
+  FormControl,
+  ButtonGroup,
+  Button
 } from 'react-bootstrap';
 import '../style/update-settings.css';
 
@@ -46,22 +48,29 @@ class UpdateSettings extends ComponentBase {
       >
         <Grid id='update-settings-table'>
           <Row>
-            <Col xs={2} md={2}>Create/update interval</Col>
-            <Col xs={4} md={4}>
-              Every <FormControl
+            <Col xs={5} md={4}>Create/update interval</Col>
+            <Col xs={7} md={8}>
+              <span>Every</span>
+              <FormControl
+                style={{ width: '50%', display: 'inline-block' }}
                 type='text'
                 value={this.state.updateInterval}
-                onChange={this.handleIntervalChange} /> min
+                onChange={this.handleIntervalChange} />
+              <span>min</span>
             </Col>
           </Row>
 
           <Row>
-            <Col xs={2} md={2}>Create/update interval</Col>
-            <Col xs={4} md={4}>
-              Every <FormControl
-                type='text'
-                value={this.state.updateInterval}
-                onChange={this.handleIntervalChange} /> min
+            <Col xs={5} md={4}><span>Looping</span></Col>
+            <Col xs={7} md={8}>
+              <ButtonGroup>
+                <Button bsStyle='primary'>
+                  Yes
+                </Button>
+                <Button bsStyle='primary'>
+                  No
+                </Button>
+              </ButtonGroup>
             </Col>
           </Row>
         </Grid>
