@@ -1,0 +1,10 @@
+.file-picker{
+	opacity: 0;
+	overflow: hidden;
+  position: absolute;
+  cursor: pointer;
+  
+  max-width: 90px;
+  /* Do NOT enable the following. the control needs to stay on top */
+	/* z-index: -1; */
+}

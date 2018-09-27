@@ -1,0 +1,10 @@
+.app-header {
+  height: 80px;
+  padding: 20px;
+  border-bottom: 3px solid #323232;
+  margin: 0 10px 10px 10px;
+}
+
+.app-title {
+  font-size: 1.5em;
+}
