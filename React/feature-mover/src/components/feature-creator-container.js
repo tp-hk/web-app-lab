@@ -7,6 +7,7 @@ import MapSchemaTabPane from './map-schema-tab-pane';
 import CsvUploader from './csv-uploader';
 import EditOptionPicker from './edit-option-picker';
 import UpdateSettings from './update-settings';
+import StartOptions from './start-options';
 import {
   Grid,
   Row,
@@ -71,6 +72,13 @@ class FeatureCreatorContainer extends ComponentBase {
               <Row>
                 <Col>
                   {updateSettings}
+                </Col>
+              </Row>
+
+              {/* Start/pause/stop */}
+              <Row>
+                <Col>
+                  <StartOptions />
                 </Col>
               </Row>
 

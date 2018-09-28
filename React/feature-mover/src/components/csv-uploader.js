@@ -1,8 +1,8 @@
 import React from 'react';
 import ComponentBase from './component-base';
 import SettingContainer from './setting-container';
-import SchemaTable from './schema-table';
-import { Label } from 'react-bootstrap';
+// import SchemaTable from './schema-table';
+import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { uploadNewAttributes } from '../actions/index';
 import * as csv from 'csvtojson';
@@ -91,9 +91,9 @@ class CsvUploader extends ComponentBase {
             className='file-picker'
             onChange={this.handleFileChange}
           />
-          <Label style={{ cursor: 'pointer' }}>
+          <Button bsStyle='primary'>
             Choose File
-          </Label>
+          </Button>
         </h4>
 
         {/* 

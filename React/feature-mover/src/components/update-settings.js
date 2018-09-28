@@ -16,7 +16,7 @@ class UpdateSettings extends ComponentBase {
     super(props);
 
     this.state = {
-      updateInterval: 0
+      updateInterval: 0.5
     }
   }
 
