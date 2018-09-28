@@ -1,9 +1,9 @@
 import initialState from './initial-state';
-import * as types from '../constants/action-types';
+import { SET_EDIT_OPTION } from '../actions/set-edit-option';
 
 export const editOption = (state = initialState.ui.editOption, action) => {
   switch (action.type) {
-    case types.SET_EDIT_OPTION:
+    case SET_EDIT_OPTION:
       return action.payload.option;
   }
   return state;

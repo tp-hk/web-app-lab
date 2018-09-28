@@ -1,9 +1,9 @@
 import initialState from './initial-state';
-import * as types from '../constants/action-types';
+import { SET_MAP, SET_VIEW } from '../actions/loaded-webmap-action';
 
 export const map = (state = initialState.entities.map, action) => {
   switch (action.type) {
-    case types.SET_MAP:
+    case SET_MAP:
       return action.payload.map;
   }
   return state;
@@ -11,7 +11,7 @@ export const map = (state = initialState.entities.map, action) => {
 
 export const view = (state = initialState.entities.view, action) => {
   switch (action.type) {
-    case types.SET_VIEW:
+    case SET_VIEW:
       return action.payload.view;
   }
   return state;

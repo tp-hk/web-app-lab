@@ -4,7 +4,7 @@ import SettingContainer from './setting-container';
 // import SchemaTable from './schema-table';
 import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { uploadNewAttributes } from '../actions/index';
+import { loadFeatures } from '../actions/index';
 import * as csv from 'csvtojson';
 import '../style/csv-uploader.css';
 
@@ -61,7 +61,7 @@ class CsvUploader extends ComponentBase {
           for (let index in _features)
             features[index] = _features[index];
 
-          this.props.uploadNewAttributes(features);
+          this.props.loadFeatures(features);
         });
     }
     reader.readAsText(file);
@@ -112,4 +112,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { uploadNewAttributes })(CsvUploader);
+export default connect(mapStateToProps, { loadFeatures })(CsvUploader);

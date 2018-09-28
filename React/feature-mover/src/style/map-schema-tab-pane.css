@@ -1,0 +1,10 @@
+#map-schema-tab-pane > ul > li:not(.active) > a{
+  background-color: #424242;
+}
+
+#map-schema-tab-pane > div {
+  border: 3px solid #fff;
+  max-height: 800px;
+  width: 100%;
+  overflow-y: scroll;
+}

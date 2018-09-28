@@ -5,6 +5,8 @@ import {
   ButtonGroup,
   Button
 } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { startFeatureUpload, pauseFeatureUpload, stopFeatureUpload } from '../actions/index';
 
 const display = {
   INLINE: 'inline',
@@ -25,6 +27,8 @@ class StartOptions extends ComponentBase {
   handleStartClick = (evt) => {
     evt.preventDefault();
 
+    this.props.startFeatureUpload();
+
     this.setState({
       showStart: display.NONE,
       showPause: display.INLINE,
@@ -35,6 +39,8 @@ class StartOptions extends ComponentBase {
   handlePauseClick = (evt) => {
     evt.preventDefault();
 
+    this.props.pauseFeatureUpload();
+
     this.setState({
       showStart: display.INLINE,
       showPause: display.NONE,
@@ -44,6 +50,8 @@ class StartOptions extends ComponentBase {
 
   handleStopClick = (evt) => {
     evt.preventDefault();
+
+    this.props.stopFeatureUpload();
 
     this.setState({
       showStart: display.INLINE,
@@ -73,7 +81,6 @@ class StartOptions extends ComponentBase {
   }
 }
 
-export default StartOptions;
-
+export default connect(null, { startFeatureUpload, pauseFeatureUpload, stopFeatureUpload })(StartOptions);
 
 

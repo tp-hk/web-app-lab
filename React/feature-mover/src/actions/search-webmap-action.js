@@ -1,8 +1,7 @@
-import * as types from '../constants/action-types';
-
+export const SET_WEBMAPID = 'SET_WEBMAPID';
 export const searchWebmap = webmapId => {
   return {
-    type: types.SET_WEBMAPID,
+    type: SET_WEBMAPID,
     payload: {
       webmapId,
     },

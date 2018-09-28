@@ -1,12 +1,12 @@
 import initialState from './initial-state';
-import * as types from '../constants/action-types';
+import { LOAD_FEATURES } from '../actions/load-features-action';
 
 export const newFeatures = (
   state = initialState.entities.newFeatures,
   action
 ) => {
   switch (action.type) {
-    case types.UPLOAD_NEW_ATTRIBUTES:
+    case LOAD_FEATURES:
       return action.payload.features;
   }
 

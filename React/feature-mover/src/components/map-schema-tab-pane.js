@@ -3,6 +3,7 @@ import ComponentBase from './component-base';
 import { Tabs, Tab } from 'react-bootstrap';
 import MapContainer from './map-container';
 import SchemaTable from './schema-table';
+import '../style/map-schema-tab-pane.css';
 
 class MapSchemaTabPane extends ComponentBase {
 

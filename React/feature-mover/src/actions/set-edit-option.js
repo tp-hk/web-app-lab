@@ -1,8 +1,7 @@
-import * as types from '../constants/action-types';
-
+export const SET_EDIT_OPTION = 'SET_EDIT_OPTION';
 export const setEditOption = option => {
   return {
-    type: types.SET_EDIT_OPTION,
+    type: SET_EDIT_OPTION,
     payload: {
       option
     },

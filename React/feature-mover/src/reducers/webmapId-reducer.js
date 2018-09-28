@@ -1,9 +1,9 @@
 import initialState from './initial-state';
-import * as types from '../constants/action-types';
+import { SET_WEBMAPID } from '../actions/search-webmap-action';
 
 export const webmapId = (state = initialState.entities.webmapId, action) => {
   switch (action.type) {
-    case types.SET_WEBMAPID:
+    case SET_WEBMAPID:
       return action.payload.webmapId;
   }
 
