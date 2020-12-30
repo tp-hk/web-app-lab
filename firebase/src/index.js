@@ -5,7 +5,6 @@ import firebase from "firebase";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
-import { FirebaseDatabaseProvider } from "@react-firebase/database";
 import config from "./config";
 import App from "./components/App";
 import Create from "./components/Create";
@@ -17,17 +16,15 @@ firebase.initializeApp(config);
 export default firebase;
 
 ReactDOM.render(
-  <FirebaseDatabaseProvider firebase={firebase} {...config}>
-    <React.StrictMode>
-      <Router>
-        <div>
-          <Route exact path="/" component={App} />
-          <Route path="/create" component={Create} />
-          <Route path="/show/:id" component={Show} />
-        </div>
-      </Router>
-    </React.StrictMode>
-  </FirebaseDatabaseProvider>,
+  <React.StrictMode>
+    <Router>
+      <div>
+        <Route exact path="/" component={App} />
+        <Route path="/create" component={Create} />
+        <Route path="/show/:id" component={Show} />
+      </div>
+    </Router>
+  </React.StrictMode>,
   document.getElementById("root")
 );
 
